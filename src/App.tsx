@@ -1,28 +1,19 @@
-import { Header } from './components/header'
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from './shared/hooks/useRedux';
-import { fetchCatalogThunk } from './context';
-import { RootStore } from './context/store';
-import { CardCategory } from './components/cardCategoryProduct';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Home, MainLayout } from './pages'
+
 
 function App() {
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    dispatch(fetchCatalogThunk())
-  }, [dispatch])
-  const { catalog, error } = useAppSelector((state: RootStore) => state.catalog)
-  console.log(error)
 
   return (
     <>
-      <Header />
-      <div>
-        <div>
-          {catalog.map((product) => (
-            <CardCategory item={product}></CardCategory>
-          ))}
-        </div>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path='/' element={<Home />}>
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
