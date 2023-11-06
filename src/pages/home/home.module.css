@@ -1,0 +1,17 @@
+.categories{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+    "a  m  d"
+    "a  m  d"
+    "a  m  d"
+    "a  n  d"
+    "b  n  e"
+    "b  n  e"
+    "b  o  e"
+    "b  o  e"
+    "c  o  f"
+    "c  p  f"
+    "c  p  f"
+    "c  p  f";
+}
