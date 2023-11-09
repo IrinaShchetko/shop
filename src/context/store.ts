@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { catalogReducer } from "."
+import { catalogReducer, goodsReducer } from "."
 import { combineReducers } from "redux"
 
 export const reducers = combineReducers({
-    catalog: catalogReducer
+    catalog: catalogReducer,
+    goods: goodsReducer
 })
 export const store = configureStore({
     reducer: reducers,

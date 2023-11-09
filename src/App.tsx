@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home, MainLayout } from './pages'
+import { Home, MainLayout, Products } from './pages'
 
 
 function App() {
@@ -9,9 +9,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
-            <Route path='/' element={<Home />}>
-            </Route>
+{/* страница хоум - каталог */}
+            <Route 
+            path='/' 
+            element={<Home />}/>
+{/* страница платья */}
+            <Route
+              path="/products"
+              element={<Products />}
+            />        
+
           </Route>
+          
         </Routes>
       </BrowserRouter>
     </>

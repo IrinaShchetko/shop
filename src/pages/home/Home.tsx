@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { RootStore } from '../../context/store'
 import { fetchCatalogThunk } from '../../context'
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/useRedux'
-import { CardCategory } from '../../components/cardCategoryProduct'
+import { CardCategory } from '../../components/cardCategory'
 import styles from './home.module.css'
 
 export const Home = () => {
@@ -16,7 +16,7 @@ export const Home = () => {
     return (
         <div className={styles.categories}>
         {catalog.map((product) => (
-          <CardCategory item={product}></CardCategory>
+          <CardCategory key={product.id} item={product}></CardCategory>
         ))}
       </div>
       )
