@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home, MainLayout, Products } from './pages'
+import { Favorites, Home, MainLayout, Products } from './pages'
 
 
 function App() {
@@ -9,18 +9,23 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
-{/* страница хоум - каталог */}
-            <Route 
-            path='/' 
-            element={<Home />}/>
-{/* страница платья */}
+            {/* страница хоум - каталог */}
+            <Route
+              path='/'
+              element={<Home />} />
+            {/* страница платья */}
             <Route
               path="/:category"
               element={<Products />}
-            />        
+            />
+
+            {/* страница понравившиеся */}
+            <Route
+              path='/favorites'
+              element={<Favorites />} />
 
           </Route>
-          
+
         </Routes>
       </BrowserRouter>
     </>

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styles from './header.module.css'
 import img from '../../assets/header/fone.png'
 import contact from '../../assets/header/contact.svg'
@@ -13,7 +14,7 @@ import { useState } from 'react'
 export const Header = () => {
     const [stateOfBurger, setStateOfBurger] = useState(false)
     function handlerClick() {
-      setStateOfBurger(!stateOfBurger)
+        setStateOfBurger(!stateOfBurger)
     }
     return (
         <header className={styles.header}>
@@ -26,7 +27,7 @@ export const Header = () => {
             <input className={styles.search} type="text" placeholder="Search zebra.com"></input>
             <button className={styles.contact}><img src={contact} alt="" /></button>
             <button className={styles.chat}><img src={chat} alt="" /></button>
-            <button className={styles.favorites}><img src={favorites} alt="" /></button>
+            <NavLink to='/favorites'><button className={styles.favorites}><img src={favorites} alt="" /></button></NavLink>
             <button className={styles.basket}><img src={basket} alt="" /></button>
             <button className={styles.user}><img src={user} alt="" /></button>
         </header>
