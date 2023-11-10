@@ -29,7 +29,11 @@ export const Header = () => {
             <button className={styles.chat}><img src={chat} alt="" /></button>
             <NavLink to='/favorites'><button className={styles.favorites}><img src={favorites} alt="" /></button></NavLink>
             <button className={styles.basket}><img src={basket} alt="" /></button>
-            <button className={styles.user}><img src={user} alt="" /></button>
+            <NavLink to='/account'>
+                <button className={styles.user}>
+                    <img src={user} alt="" />
+                </button>
+            </NavLink>
         </header>
     )
 }
