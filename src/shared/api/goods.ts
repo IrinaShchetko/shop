@@ -2,9 +2,10 @@ import Api from "."
 import { GoodsProps } from './types'
 
 class GoodsApi extends Api {
-    endpoint = 'dresses/'
-    async fetchGoods(): Promise<GoodsProps[]> {
-        const response = await this.api.get<GoodsProps[]>(this.endpoint)
+    // endpoint = 'dresses/'
+    async fetchGoods(category:string): Promise<GoodsProps[]> {
+        const response = await this.api.get<GoodsProps[]>(`${category}/`)
+        console.log(response)
         const products = response.data
 
         products.forEach((item) => {

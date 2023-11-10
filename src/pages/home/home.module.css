@@ -16,3 +16,60 @@
         "c  p  f"
         "c  p  f";
 }
+.category:nth-child(1) {
+    grid-area: a;
+}
+
+.category:nth-child(4) {
+    grid-area: b;
+}
+
+.category:nth-child(7) {
+    grid-area: c;
+}
+
+.category:nth-child(2) {
+    grid-area: m;
+}
+
+.category:nth-child(5) {
+    grid-area: n;
+}
+
+.category:nth-child(8) {
+    grid-area: o;
+}
+
+.category:nth-child(9) {
+    grid-area: p;
+}
+
+.category:nth-child(3) {
+    grid-area: d;
+}
+
+.category:nth-child(6) {
+    grid-area: e;
+}
+
+.category:nth-child(10) {
+    grid-area: f;
+}
+
+.category:nth-child(1),
+.category:nth-child(3),
+.category:nth-child(4),
+.category:nth-child(6),
+.category:nth-child(7),
+.category:nth-child(10) {
+    width: 41.7rem;
+    height: 54.9rem;
+}
+
+.category:nth-child(2),
+.category:nth-child(5),
+.category:nth-child(8),
+.category:nth-child(9) {
+    width: 27.4rem;
+    height: 40.6rem;
+}

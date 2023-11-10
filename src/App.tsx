@@ -15,7 +15,7 @@ function App() {
             element={<Home />}/>
 {/* страница платья */}
             <Route
-              path="/products"
+              path="/:category"
               element={<Products />}
             />        
 
