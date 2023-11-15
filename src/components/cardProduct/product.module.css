@@ -6,7 +6,7 @@
 
 .img {
     width: 100%; 
-    max-height: 448px;
+    height: 448px;
     object-fit: cover;
     border-radius: 35px;
 }

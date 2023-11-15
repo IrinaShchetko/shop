@@ -1,10 +1,14 @@
 export interface GoodsProps {
-    id: number
+    _id: number 
     vendor_code: string | number
-    name: string
+    title: string
     desc: string
     price: number
-    img: string
+    images: string | string[]
+    category: string
+    'fabric structure': string 
+    size: number[]
+    color: string[] 
 }
 export interface CatalogProps {
     id: number

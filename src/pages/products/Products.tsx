@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { CardProduct } from "../../components/cardProduct";
 import { useAppDispatch, useAppSelector } from "../../shared/hooks/useRedux";
 import { RootStore } from "../../redux/store";
 import { fetchGoodsThunk } from "../../redux/goods/thunk";
 import styles from './products.module.css';
+import { GoodsProps } from "../../shared/api/types";
+import { addToFavoritesAsync, removeFromFavoritesAsync } from "../../redux";
 
 export const Products = () => {
   const { category } = useParams()
@@ -17,42 +19,43 @@ export const Products = () => {
 
   const { goods, error } = useAppSelector((state: RootStore) => state.goods)
   console.log(error)
+  const favorites = useAppSelector((state: RootStore) => state.favorites.items)
 
-  const [localFavorites, setLocalFavorites] = useState(
-    JSON.parse(localStorage.getItem('favorites') || '[]')
-  )
+  function handleAddFavorites(
+    item: GoodsProps,
+    isCurrentlyFavorited: boolean
+  ) {
+    const itemData = {
+      _id: item._id,
+      images: item.images,
+      title: item.title,
+      price: item.price,
 
-  function handleAddFavorites(itemId: number, isCurrentlyFavorited: boolean) {
-    const selectedItem = goods.find(item => item.id === itemId)
-
-    if (selectedItem) {
-      const itemData = {
-        id: selectedItem.id,
-        img: selectedItem.img,
-        name: selectedItem.name,
-        price: selectedItem.price,
-        isFavorite: !isCurrentlyFavorited
-      }
-
-      const updatedFavorites = [...localFavorites, itemData]
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites))
-      setLocalFavorites(updatedFavorites)
+      vendor_code: item.vendor_code,
+      desc: item.desc,
+      category: item.category,
+      'fabric structure': item["fabric structure"],
+      size: item.size,
+      color: item.color
+    }
+    if (!isCurrentlyFavorited) {
+      dispatch(addToFavoritesAsync(itemData))
+    } else {
+      dispatch(removeFromFavoritesAsync(itemData._id))
     }
   }
+
 
   return (
     <div className={styles.products}>
       {goods.map(item => {
-        const isFavorite = localFavorites.some(
-          (favoritesItem: { id: number, name: string }) =>
-            favoritesItem.id === item.id && favoritesItem.name === item.name
-        );
+        const isFavorite = favorites.some(favoritesItem => favoritesItem._id === item._id)
 
         return (
           <CardProduct
-            key={item.id}
+            key={item._id}
             item={item}
-            onClick={() => handleAddFavorites(item.id, isFavorite)}
+            onClick={() => handleAddFavorites(item, isFavorite)}
             isFavorite={isFavorite}
           />
         )
