@@ -28,7 +28,7 @@ export const Header = () => {
             <button className={styles.contact}><img src={contact} alt="" /></button>
             <button className={styles.chat}><img src={chat} alt="" /></button>
             <NavLink to='/favorites'><button className={styles.favorites}><img src={favorites} alt="" /></button></NavLink>
-            <button className={styles.basket}><img src={basket} alt="" /></button>
+            <NavLink to='/basket'><button className={styles.basket}><img src={basket} alt="" /></button></NavLink>
             <NavLink to='/account'>
                 <button className={styles.user}>
                     <img src={user} alt="" />

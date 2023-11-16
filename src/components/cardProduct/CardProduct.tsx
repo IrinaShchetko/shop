@@ -3,36 +3,39 @@ import liked from '../../assets/main/liked.svg'
 import loupe from '../../assets/main/loupe.svg'
 import styles from './product.module.css'
 import { GoodsProps } from '../../shared/api/types'
-import { useState } from 'react'
+import { Button } from '../button/index'
 
-interface GoodProps {
+interface CardProductProps {
     item: GoodsProps
-    onClick: (itemId: string, isCurrentlyFavorite: boolean) => void
+    onFavoriteClick: (itemId: number | string, isCurrentlyFavorite: boolean) => void
+    onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
     isFavorite?: boolean
+    isInBasket?: boolean
 }
 
-export const CardProduct: React.FC<GoodProps> = ({ item, onClick, isFavorite }) => {
-    const [localIsFavorite, setLocalIsFavorite] = useState(isFavorite)
-    function handleFavorite() {
-        setLocalIsFavorite(!localIsFavorite)
-        onClick(item._id, !localIsFavorite)
-    }
+export const CardProduct: React.FC<CardProductProps> = ({
+    item,
+    onFavoriteClick,
+    onBasketClick,
+    isFavorite = false,
+    isInBasket = false,
+}) => {
     const firstImage = Array.isArray(item.images) ? item.images[0] : item.images
 
     return (
         <div className={styles.product}>
             <img className={styles.img} src={firstImage} alt={item.title} />
-            <button className={styles.favorites} onClick={handleFavorite}>
+            <Button className={styles.favorites} item={item} typeButton="favorites" onButtonClick={onFavoriteClick}>
                 <img src={isFavorite ? liked : unliked} alt={isFavorite ? liked : unliked} />
-            </button>
+            </Button>
             <button className={styles.loupe}>
                 <img src={loupe} alt="" />
             </button>
             <p className={styles.title}>{item.title}</p>
-            {/* <p className={styles.rating}></p> */}
             <p className={styles.price}> BYN {item.price}</p>
-            <button className={styles.basket}>Add to cart</button>
+            <Button className={styles.basket} item={item} typeButton="basket" onButtonClick={onBasketClick}>
+                {isInBasket ? 'Remove from cart' : 'Add to cart'}
+            </Button>
         </div>
     )
 }
-
