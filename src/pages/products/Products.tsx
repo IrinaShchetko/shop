@@ -41,7 +41,7 @@ export const Products = () => {
     if (!isCurrentlyFavorited) {
       dispatch(addToFavoritesAsync(itemData))
     } else {
-      dispatch(removeFromFavoritesAsync(itemData._id))
+      dispatch(removeFromFavoritesAsync(itemData))
     }
   }
 

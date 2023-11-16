@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 interface GoodProps {
     item: GoodsProps
-    onClick: (itemId: number, isCurrentlyFavorite: boolean) => void
+    onClick: (itemId: string, isCurrentlyFavorite: boolean) => void
     isFavorite?: boolean
 }
 

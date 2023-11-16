@@ -11,6 +11,7 @@ export const AuthForm = () => {
                     <label
                         htmlFor="email"
                         className={styles.label}>
+                            Email
                     </label>
                     <input
                         className={styles.input}
@@ -21,6 +22,7 @@ export const AuthForm = () => {
                     <label
                         htmlFor="password"
                         className={styles.label}>
+                            Password
                     </label>
                     <input
                         className={styles.input}

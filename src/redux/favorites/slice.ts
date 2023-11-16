@@ -17,7 +17,6 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // Обрабатываем события успешного завершения асинхронных thunk
     builder
       .addCase(fetchFavoritesThunk.fulfilled, (state, action) => {
         state.status = 'succeeded'
@@ -36,7 +35,7 @@ export const favoritesSlice = createSlice({
       })
       .addCase(fetchFavoritesThunk.rejected, (state, action) => {
         state.status = 'failed'
-        // state.error = action.error.message ?? 'An error occurred';
+        // state.error = action.error.message ?? 'An error occurred'
       })
   }
 })

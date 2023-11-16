@@ -1,5 +1,5 @@
 export interface GoodsProps {
-    _id: number 
+    _id: string
     vendor_code: string | number
     title: string
     desc: string
