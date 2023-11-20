@@ -12,13 +12,13 @@ import { useState } from 'react'
 import { Search } from '../search'
 import { useSearch } from '../../shared/hooks/useSearch'
 
-
 export const Header = () => {
     const [stateOfBurger, setStateOfBurger] = useState(false)
     function handlerClick() {
         setStateOfBurger(!stateOfBurger)
     }
-    const search = useSearch()
+    const { searchValue, handleInput } = useSearch() 
+
     return (
         <header className={styles.header}>
             <div className={styles.wrapper}>
@@ -28,11 +28,10 @@ export const Header = () => {
             <Burger
                 type={'button'}
                 onClick={handlerClick} />
-            <Search
-                className={styles.search}
-                type={"text"}
-                value={search.searcher}
-                onChange={search.handleInput} />
+            <Search className={styles.search}
+                type="text"
+                value={searchValue}
+                onChange={handleInput} />
             <button className={styles.contact}><img src={contact} alt="" /></button>
             <button className={styles.chat}><img src={chat} alt="" /></button>
             <NavLink to='/favorites'>

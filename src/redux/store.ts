@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { basketReducer, catalogReducer, favoritesReducer, goodsReducer } from "."
+import { basketReducer, catalogReducer, favoritesReducer, goodsReducer, searchReducer } from "."
 import { combineReducers } from "redux"
 
 export const reducers = combineReducers({
@@ -7,6 +7,7 @@ export const reducers = combineReducers({
     goods: goodsReducer,
     favorites: favoritesReducer,
     basket: basketReducer,
+    search: searchReducer
 })
 export const store = configureStore({
     reducer: reducers,
