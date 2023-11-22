@@ -1,14 +1,14 @@
-import Api from "."
+import Api from '.'
 import { GoodsProps } from './types'
 
 class FavoritesApi extends Api {
-  endpoint = "favorites/"
+  endpoint = 'favorites/'
 
   async fetchFavorites(): Promise<GoodsProps[]> {
     const response = await this.api.get<GoodsProps[]>(this.endpoint)
     const products = response.data
 
-    products.forEach((item) => {
+    products.forEach(item => {
       if (Array.isArray(item.images) && item.images.length > 0) {
         const imageUrl = new URL(item.images[0], import.meta.env.VITE_BASE_URL)
         item.images = imageUrl.href

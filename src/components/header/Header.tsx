@@ -11,44 +11,52 @@ import { Burger } from './burger'
 import { useState } from 'react'
 import { Search } from '../search'
 import { useSearch } from '../../shared/hooks/useSearch'
-
+//TODO: add styles
 export const Header = () => {
-    const [stateOfBurger, setStateOfBurger] = useState(false)
-    function handlerClick() {
-        setStateOfBurger(!stateOfBurger)
-    }
-    const { searchValue, handleInput } = useSearch() 
+  const [stateOfBurger, setStateOfBurger] = useState(false)
+  function handlerClick() {
+    setStateOfBurger(!stateOfBurger)
+  }
+  const { searchValue, handleInput } = useSearch()
 
-    return (
-        <header className={styles.header}>
-            <div className={styles.wrapper}>
-                <img className={styles.siteCover} src={img} alt="website cover in the form of zebra colors" />
-                <img src={logo} alt="logo of website" />
-            </div>
-            <Burger
-                type={'button'}
-                onClick={handlerClick} />
-            <Search className={styles.search}
-                type="text"
-                value={searchValue}
-                onChange={handleInput} />
-            <button className={styles.contact}><img src={contact} alt="" /></button>
-            <button className={styles.chat}><img src={chat} alt="" /></button>
-            <NavLink to='/favorites'>
-                <button className={styles.favorites}>
-                    <img src={favorites} alt="favorites" />
-                </button>
-            </NavLink>
-            <NavLink to='/basket'>
-                <button className={styles.basket}>
-                    <img src={basket} alt="basket" />
-                </button>
-            </NavLink>
-            <NavLink to='/account'>
-                <button className={styles.user}>
-                    <img src={user} alt="account" />
-                </button>
-            </NavLink>
-        </header>
-    )
+  return (
+    <header className={styles.header}>
+      <div className={styles.wrapper}>
+        <img
+          className={styles.siteCover}
+          src={img}
+          alt="website cover in the form of zebra colors"
+        />
+        <img src={logo} alt="logo of website" />
+      </div>
+      <Burger type={'button'} onClick={handlerClick} />
+      <Search
+        className={styles.search}
+        type="text"
+        value={searchValue}
+        onChange={handleInput}
+      />
+      <button className={styles.contact}>
+        <img src={contact} alt="" />
+      </button>
+      <button className={styles.chat}>
+        <img src={chat} alt="" />
+      </button>
+      <NavLink to="/favorites">
+        <button className={styles.favorites}>
+          <img src={favorites} alt="favorites" />
+        </button>
+      </NavLink>
+      <NavLink to="/basket">
+        <button className={styles.basket}>
+          <img src={basket} alt="basket" />
+        </button>
+      </NavLink>
+      <NavLink to="/account">
+        <button className={styles.user}>
+          <img src={user} alt="account" />
+        </button>
+      </NavLink>
+    </header>
+  )
 }

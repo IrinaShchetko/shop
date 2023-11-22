@@ -1,18 +1,18 @@
-import Api from "."
+import Api from '.'
 import { CatalogProps } from './types'
 
 class CatalogApi extends Api {
-    endpoint = 'catalog/'
-    async fetchCatalog(): Promise<CatalogProps[]> {
-        const response = await this.api.get<CatalogProps[]>(this.endpoint)
-        const products = response.data
+  endpoint = 'catalog/'
+  async fetchCatalog(): Promise<CatalogProps[]> {
+    const response = await this.api.get<CatalogProps[]>(this.endpoint)
+    const products = response.data
 
-        products.forEach((item) => {
-            item.img = `${import.meta.env.VITE_BASE_URL}${item.img}`
-        })
+    products.forEach(item => {
+      item.img = `${import.meta.env.VITE_BASE_URL}${item.img}`
+    })
 
-        return products
-    }
+    return products
+  }
 }
 
 export default new CatalogApi()

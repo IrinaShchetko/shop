@@ -1,22 +1,26 @@
-import { createSlice} from "@reduxjs/toolkit";
-import { GoodsProps } from "../../shared/api/types";
-import { addToFavoritesAsync, fetchFavoritesThunk, removeFromFavoritesAsync } from ".";
+import { createSlice } from '@reduxjs/toolkit'
+import { GoodsProps } from '../../shared/api/types'
+import {
+  addToFavoritesAsync,
+  fetchFavoritesThunk,
+  removeFromFavoritesAsync,
+} from '.'
 
 interface FavoritesState {
-  items: GoodsProps[];
+  items: GoodsProps[]
   status: 'none' | 'loading' | 'succeeded' | 'failed'
 }
 
 const initialState: FavoritesState = {
   items: [],
-  status:'none'
+  status: 'none',
 }
 
 export const favoritesSlice = createSlice({
-  name: "favorites",
+  name: 'favorites',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(fetchFavoritesThunk.fulfilled, (state, action) => {
         state.status = 'succeeded'
@@ -28,14 +32,15 @@ export const favoritesSlice = createSlice({
       })
       .addCase(removeFromFavoritesAsync.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.items = state.items.filter((item) => item._id !== action.payload)
+        state.items = state.items.filter(item => item._id !== action.payload)
       })
-      .addCase(fetchFavoritesThunk.pending, (state) => {
+      .addCase(fetchFavoritesThunk.pending, state => {
         state.status = 'loading'
       })
-      .addCase(fetchFavoritesThunk.rejected, (state, action) => {
+      //TODO: add action
+      .addCase(fetchFavoritesThunk.rejected, state => {
         state.status = 'failed'
         // state.error = action.error.message ?? 'An error occurred'
       })
-  }
+  },
 })

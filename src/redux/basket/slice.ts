@@ -1,22 +1,22 @@
-import { createSlice} from "@reduxjs/toolkit";
-import { GoodsProps } from "../../shared/api/types";
-import { addToBasketAsync, fetchBasketThunk, removeFromBasketAsync } from ".";
+import { createSlice } from '@reduxjs/toolkit'
+import { GoodsProps } from '../../shared/api/types'
+import { addToBasketAsync, fetchBasketThunk, removeFromBasketAsync } from '.'
 
 interface BasketState {
-  items: GoodsProps[];
+  items: GoodsProps[]
   status: 'none' | 'loading' | 'succeeded' | 'failed'
 }
 
 const initialState: BasketState = {
   items: [],
-  status:'none'
+  status: 'none',
 }
 
 export const basketSlice = createSlice({
-  name: "basket",
+  name: 'basket',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(fetchBasketThunk.fulfilled, (state, action) => {
         state.status = 'succeeded'
@@ -28,14 +28,14 @@ export const basketSlice = createSlice({
       })
       .addCase(removeFromBasketAsync.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.items = state.items.filter((item) => item._id !== action.payload)
+        state.items = state.items.filter(item => item._id !== action.payload)
       })
-      .addCase(fetchBasketThunk.pending, (state) => {
+      .addCase(fetchBasketThunk.pending, state => {
         state.status = 'loading'
       })
-      .addCase(fetchBasketThunk.rejected, (state) => {
+      .addCase(fetchBasketThunk.rejected, state => {
         state.status = 'failed'
         // state.error = action.error.message ?? 'An error occurred'
       })
-  }
+  },
 })

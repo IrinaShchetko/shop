@@ -8,7 +8,7 @@ export const fetchFavoritesThunk = createAsyncThunk(
   async () => {
     const response = await favoritesApi.fetchFavorites()
     return response
-  }
+  },
 )
 
 // добавляем товар в избранное
@@ -17,7 +17,7 @@ export const addToFavoritesAsync = createAsyncThunk(
   async (item: GoodsProps) => {
     await favoritesApi.addToFavorites(item)
     return item
-  }
+  },
 )
 
 //удаленяем товар из избранного
@@ -26,5 +26,5 @@ export const removeFromFavoritesAsync = createAsyncThunk(
   async (item: GoodsProps) => {
     await favoritesApi.removeFromFavorites(item)
     return item._id
-  }
+  },
 )
