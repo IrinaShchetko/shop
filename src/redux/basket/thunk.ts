@@ -8,7 +8,7 @@ export const fetchBasketThunk = createAsyncThunk(
   async () => {
     const response = await basketApi.fetchBasket()
     return response
-  }
+  },
 )
 
 // добавляем товар в избранное
@@ -17,7 +17,7 @@ export const addToBasketAsync = createAsyncThunk(
   async (item: GoodsProps) => {
     await basketApi.addToBasket(item)
     return item
-  }
+  },
 )
 
 //удаленяем товар из избранного
@@ -26,5 +26,5 @@ export const removeFromBasketAsync = createAsyncThunk(
   async (item: GoodsProps) => {
     await basketApi.removeFromBasket(item)
     return item._id
-  }
+  },
 )

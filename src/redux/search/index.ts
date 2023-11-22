@@ -1,3 +1,3 @@
-import {searchSlice} from './slice'
+import { searchSlice } from './slice'
 
 export const searchReducer = searchSlice.reducer

@@ -1,42 +1,41 @@
 .burger {
-    position: relative;
-    margin: 10px;
-    padding: 2px;
-    border: none;
-    cursor: pointer;
-    width: 30px;
-    height: 20px;
-    display: flex;
-    align-items: flex-end;
+  position: relative;
+  margin: 10px;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  align-items: flex-end;
 }
 
 .line {
-    position: absolute;
-    background-color: white;
-    width: 30px;
-    height: 2px;
-    left: 0;
-    top: 50%;
+  position: absolute;
+  background-color: white;
+  width: 30px;
+  height: 2px;
+  left: 0;
+  top: 50%;
 }
-.line:first-child{
-    content: "";
-    position: absolute;
-    background-color: white;
-    width: 30px;
-    height: 2px;
-    left: 0;
-    top: 0%;
+.line:first-child {
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 30px;
+  height: 2px;
+  left: 0;
+  top: 0%;
 }
-.line:last-child{
-    content: "";
-    position: absolute;
-    background-color: white;
-    width: 30px;
-    height: 2px;
-    left: 0;
-    top: 100%;
+.line:last-child {
+  content: '';
+  position: absolute;
+  background-color: white;
+  width: 30px;
+  height: 2px;
+  left: 0;
+  top: 100%;
 }
-
 
 /* .line__active {
     display: none;
@@ -51,11 +50,11 @@
 } */
 
 .line__active {
-    display: none;
+  display: none;
 }
 
 .burger.active .line:first-child,
 .burger.active .line:last-child {
-    top: 50%;
-    transform: rotate(-45deg);
+  top: 50%;
+  transform: rotate(-45deg);
 }
