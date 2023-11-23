@@ -6,12 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../shared/hooks/useRedux'
 import { CardCategory } from '../../components/cardCategory'
 import styles from './home.module.css'
 import { CardProduct } from '../../components/cardProduct'
-import {
-  addToBasketAsync,
-  addToFavoritesAsync,
-  removeFromBasketAsync,
-  removeFromFavoritesAsync,
-} from '../../redux'
+import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
 import { useActionForButton } from '../../shared/hooks/useActionForButton'
 
 export const Home = () => {
@@ -46,16 +41,12 @@ export const Home = () => {
                   onFavoriteClick={() =>
                     handleActionForButton(
                       item,
-                      favorites.some(
-                        favoritesItem => favoritesItem._id === item._id,
-                      ),
+                      favorites.some(favoritesItem => favoritesItem._id === item._id),
                       addToFavoritesAsync,
                       removeFromFavoritesAsync,
                     )
                   }
-                  isFavorite={favorites.some(
-                    favoritesItem => favoritesItem._id === item._id,
-                  )}
+                  isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}
                   onBasketClick={() =>
                     handleActionForButton(
                       item,
@@ -64,19 +55,13 @@ export const Home = () => {
                       removeFromBasketAsync,
                     )
                   }
-                  isInBasket={basket.some(
-                    basketItem => basketItem._id === item._id,
-                  )}
+                  isInBasket={basket.some(basketItem => basketItem._id === item._id)}
                 />
               </div>
             ))
           : catalog.map(product => (
               <div className={styles.category}>
-                <Link
-                  className={styles.category}
-                  key={product.id}
-                  to={`${product.category}`}
-                >
+                <Link className={styles.category} key={product.id} to={`${product.category}`}>
                   <CardCategory key={product.id} item={product}></CardCategory>
                 </Link>
               </div>
