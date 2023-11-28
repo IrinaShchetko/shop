@@ -1,0 +1,40 @@
+/* //TODO: styles  */
+.product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.img {
+  grid-column: 1;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  max-width: 100%;
+  height: 60%;
+  object-fit: cover;
+}
+.title {
+  grid-column: 2;
+  grid-row: 1;
+}
+.favorites {
+  grid-column: 3;
+  grid-row: 1;
+}
+.quantity {
+  grid-column: 2;
+  grid-row: 2;
+}
+.quantity_decrease {
+  background-color: grey;
+}
+.quantity_increase {
+  background-color: grey;
+}
+.quantity__input {
+  background-color: grey;
+}
+.remove__basket {
+  grid-column: 3;
+  grid-row: 2;
+}

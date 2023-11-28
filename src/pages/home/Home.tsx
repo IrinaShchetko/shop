@@ -34,30 +34,28 @@ export const Home = () => {
       <div className={styles.wrapper}>
         {searchValue
           ? filteredData.map(item => (
-              <div className={styles.product}>
-                <CardProduct
-                  key={item._id}
-                  item={item}
-                  onFavoriteClick={() =>
-                    handleActionForButton(
-                      item,
-                      favorites.some(favoritesItem => favoritesItem._id === item._id),
-                      addToFavoritesAsync,
-                      removeFromFavoritesAsync,
-                    )
-                  }
-                  isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}
-                  onBasketClick={() =>
-                    handleActionForButton(
-                      item,
-                      basket.some(basketItem => basketItem._id === item._id),
-                      addToBasketAsync,
-                      removeFromBasketAsync,
-                    )
-                  }
-                  isInBasket={basket.some(basketItem => basketItem._id === item._id)}
-                />
-              </div>
+              <CardProduct
+                key={item._id}
+                item={item}
+                onFavoriteClick={() =>
+                  handleActionForButton(
+                    item,
+                    favorites.some(favoritesItem => favoritesItem._id === item._id),
+                    addToFavoritesAsync,
+                    removeFromFavoritesAsync,
+                  )
+                }
+                isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}
+                onBasketClick={() =>
+                  handleActionForButton(
+                    item,
+                    basket.some(basketItem => basketItem._id === item._id),
+                    addToBasketAsync,
+                    removeFromBasketAsync,
+                  )
+                }
+                isInBasket={basket.some(basketItem => basketItem._id === item._id)}
+              />
             ))
           : catalog.map(product => (
               <div className={styles.category}>

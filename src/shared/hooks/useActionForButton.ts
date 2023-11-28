@@ -1,15 +1,10 @@
 import { GoodsProps } from '../api/types'
 import { useDispatch } from 'react-redux'
-
+//TODO: change types
 export const useActionForButton = () => {
   const dispatch = useDispatch()
 
-  const handleActionForButton = (
-    item: GoodsProps,
-    isCurrentlyInList: boolean,
-    addToAction: any,
-    removeFromAction: any,
-  ) => {
+  const handleActionForButton = (item: GoodsProps, isCurrentlyInList: boolean, addToAction: any, removeFromAction: any) => {
     const itemData = {
       _id: item._id,
       images: item.images,

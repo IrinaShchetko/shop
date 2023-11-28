@@ -1,0 +1,40 @@
+.total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  position: relative;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.sum {
+  font-size: 2rem;
+}
+.count {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.payment {
+  background: linear-gradient(180deg, #fd27c1 19.64%, #bd33fe 77.03%, #931def 143.24%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 1rem;
+  margin-top: 10px;
+}
+.payment:hover {
+  background: linear-gradient(180deg, #a1177a 19.64%, #9c26d2 77.03%, #7318b8 143.24%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
