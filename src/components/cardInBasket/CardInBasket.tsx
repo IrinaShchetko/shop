@@ -13,7 +13,7 @@ interface CardInBasketProps {
   isInBasket?: boolean
   onQuantityChangeMinus: () => void
   onQuantityChangePlus: () => void
-  quantity: number
+  quantity: Record<string, number>
 }
 export const CardInBasket = ({
   item,
@@ -37,7 +37,7 @@ export const CardInBasket = ({
           <button className={styles.quantity__decrease} onClick={onQuantityChangeMinus}>
             -
           </button>
-          <span className={styles.quantity__input}>{quantity}</span>
+          <span className={styles.quantity__input}>{quantity[item._id]}</span>
           <button className={styles.quantity__increase} onClick={onQuantityChangePlus}>
             +
           </button>
