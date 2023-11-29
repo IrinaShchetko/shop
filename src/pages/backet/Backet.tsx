@@ -3,25 +3,31 @@ import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
 import { BasketSum } from '../../components/basketSum'
 import { CardInBasket } from '../../components/cardInBasket'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAppDispatch } from '../../shared/hooks/useRedux'
+import { basketSlice } from '../../redux/basket/slice'
 //TODO: add function PayClick
 export const Basket = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
-  const [quantity, setQuantity] = useState(1)
 
-  const handleQuantityPlus = () => {
-    setQuantity(quantity + 1)
+  const dispatch = useAppDispatch()
+  const [quantity, setQuantity] = useState<Record<string, number>>({})
+  const handleQuantityChange = (itemId: string, increment: boolean) => {
+    dispatch(basketSlice.actions.updateQuantity({ itemId, increment }))
+    setQuantity(prevQuantities => ({
+      ...prevQuantities,
+      [itemId]: Math.max((prevQuantities[itemId] || 0) + (increment ? 1 : -1), 1),
+    }))
   }
-  const handleQuantityMinus = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1)
-    }
-  }
-  const totalSum = basket.reduce((acc, item) => acc + item.price * quantity, 0)
+
+  const [totalSum, setTotalSum] = useState(0)
+  useEffect(() => {
+    const updatedTotalSum = basket.reduce((acc, item) => acc + item.price * (quantity[item._id] || 1), 0)
+    setTotalSum(updatedTotalSum)
+  }, [quantity, basket])
   const handlePayClick = () => {
     console.log('Payment successful!')
   }
-
   return (
     <div className={styles.basket}>
       <div className={styles.goods}>
@@ -31,8 +37,8 @@ export const Basket = () => {
             <CardInBasket
               item={item}
               image={firstImage}
-              onQuantityChangePlus={handleQuantityPlus}
-              onQuantityChangeMinus={handleQuantityMinus}
+              onQuantityChangePlus={() => handleQuantityChange(item._id, true)}
+              onQuantityChangeMinus={() => handleQuantityChange(item._id, false)}
               quantity={quantity}
               onFavoriteClick={() =>
                 handleActionForFavorites(

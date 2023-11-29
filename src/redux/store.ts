@@ -1,11 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {
-  basketReducer,
-  catalogReducer,
-  favoritesReducer,
-  goodsReducer,
-  searchReducer,
-} from '.'
+import { basketReducer, catalogReducer, favoritesReducer, goodsReducer, searchReducer } from '.'
 import { combineReducers } from 'redux'
 
 export const reducers = combineReducers({

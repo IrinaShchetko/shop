@@ -16,3 +16,6 @@ export interface CatalogProps {
   img: string
   goods: GoodsProps[]
 }
+export interface QuantityInBasketProps {
+  totalQuantityInBasket: number
+}
