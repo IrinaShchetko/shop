@@ -1,10 +1,9 @@
-import { NavLink } from 'react-router-dom'
 import styles from './header.module.css'
 import img from '../../assets/header/fone.png'
 import contact from '../../assets/header/contact.svg'
 import chat from '../../assets/header/chat.svg'
 import favorites from '../../assets/header/favorites.svg'
-import user from '../../assets/header/user.svg'
+import account from '../../assets/header/user.svg'
 import logo from '../../assets/header/zebra1.svg'
 import { Burger } from './burger'
 import { useState } from 'react'
@@ -12,6 +11,7 @@ import { Search } from '../search'
 import { useSearch } from '../../shared/hooks/useSearch'
 import BasketButton from './basket/BasketButton'
 import { QuantityInBasketProps } from '../../shared/api/types'
+import { HeaderButton } from './button'
 //TODO: add styles
 export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
   const [stateOfBurger, setStateOfBurger] = useState(false)
@@ -28,23 +28,11 @@ export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
       </div>
       <Burger type={'button'} onClick={handlerClick} />
       <Search className={styles.search} type="text" value={searchValue} onChange={handleInput} />
-      <button className={styles.contact}>
-        <img src={contact} alt="" />
-      </button>
-      <button className={styles.chat}>
-        <img src={chat} alt="" />
-      </button>
-      <NavLink to="/favorites">
-        <button className={styles.favorites}>
-          <img src={favorites} alt="favorites" />
-        </button>
-      </NavLink>
+      <HeaderButton to={'chat'} className={styles.chat} imgSrc={chat} alt={'chat'}></HeaderButton>
+      <HeaderButton to={'contact'} className={styles.contact} imgSrc={contact} alt={'contact'}></HeaderButton>
+      <HeaderButton to={'favorites'} className={styles.favorites} imgSrc={favorites} alt={'favorites'}></HeaderButton>
       <BasketButton totalQuantityInBasket={totalQuantityInBasket} />
-      <NavLink to="/account">
-        <button className={styles.user}>
-          <img src={user} alt="account" />
-        </button>
-      </NavLink>
+      <HeaderButton to={'account'} className={styles.account} imgSrc={account} alt={'account'}></HeaderButton>
     </header>
   )
 }

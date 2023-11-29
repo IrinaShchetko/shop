@@ -19,3 +19,9 @@ export interface CatalogProps {
 export interface QuantityInBasketProps {
   totalQuantityInBasket: number
 }
+export interface HeaderButtonProps {
+  to: string
+  imgSrc: string
+  alt: string
+  className: string
+}
