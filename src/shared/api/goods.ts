@@ -4,9 +4,7 @@ import { GoodsProps } from './types'
 class GoodsApi extends Api {
   endpoint = '/category/'
   async fetchGoods(category: string): Promise<GoodsProps[]> {
-    const response = await this.api.get<GoodsProps[]>(
-      `${this.endpoint}${category}/`,
-    )
+    const response = await this.api.get<GoodsProps[]>(`${this.endpoint}${category}/`)
     console.log(`${this.endpoint}${category}/`)
     const products = response.data
 

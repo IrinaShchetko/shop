@@ -8,16 +8,17 @@ import styles from './home.module.css'
 import { CardProduct } from '../../components/cardProduct'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
 import { useActionForButton } from '../../shared/hooks/useActionForButton'
+import { useSearch } from '../../shared/hooks/useSearch'
 
 export const Home = () => {
   const dispatch = useAppDispatch()
+  const { searchValue } = useSearch()
   useEffect(() => {
     dispatch(fetchCatalogThunk())
-    dispatch(fetchGoodsThunk('all')) //для поиска по товарам все товары
+    dispatch(fetchGoodsThunk('all')) //для поиска по товарам
   }, [dispatch])
   const { catalog } = useAppSelector((state: RootStore) => state.catalog)
   const { goods } = useAppSelector((state: RootStore) => state.goods)
-  const { searchValue } = useAppSelector((state: RootStore) => state.search)
 
   const filteredData = goods.filter(
     item =>

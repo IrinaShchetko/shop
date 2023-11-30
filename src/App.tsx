@@ -1,12 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import {
-  Authorization,
-  Basket,
-  Favorites,
-  Home,
-  MainLayout,
-  Products,
-} from './pages'
+import { Authorization, Basket, Favorites, Home, MainLayout, Products } from './pages'
 
 function App() {
   return (
