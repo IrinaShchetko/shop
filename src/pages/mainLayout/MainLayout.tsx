@@ -25,11 +25,10 @@ export const MainLayout = () => {
   return (
     <>
       <Header totalQuantityInBasket={totalQuantityInBasket} />
-      <div className={styles.products}>
-        {searchValue ? (
-          searchData.map(item => (
+      {searchValue ? (
+        <div className={styles.products}>
+          {searchData.map(item => (
             <CardProduct
-              key={item._id}
               item={item}
               onFavoriteClick={() =>
                 handleActionForButton(
@@ -50,11 +49,11 @@ export const MainLayout = () => {
               }
               isInBasket={basket.some(basketItem => basketItem._id === item._id)}
             />
-          ))
-        ) : (
-          <Outlet />
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <Outlet />
+      )}
     </>
   )
 }
