@@ -3,6 +3,7 @@ import styles from './style.module.css'
 import { createPortal } from 'react-dom'
 import { ModalProps } from '../../shared/api/types'
 import background from '../../assets/header/form_background.png'
+
 const modalRootElement = document.querySelector('#modal')
 export const Modal = ({ open, onClose, children }: ModalProps) => {
   const element = useMemo(() => document.createElement('div'), [])
