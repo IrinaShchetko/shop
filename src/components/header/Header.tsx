@@ -13,7 +13,7 @@ import BasketButton from './basket/BasketButton'
 import { QuantityInBasketProps } from '../../shared/api/types'
 import { HeaderButton } from './button'
 import { Modal } from '../modal'
-import Contacts from '../contacts/Contacts'
+import { Feedback } from '../feedback'
 //TODO: add styles
 export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
   const [stateOfBurger, setStateOfBurger] = useState(false)
@@ -21,9 +21,9 @@ export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
     setStateOfBurger(!stateOfBurger)
   }
   const { searchValue, handleInput } = useSearch()
-  const [isChatModalOpen, setIsChatModalOpen] = useState(false)
-  const toggleChatModal = () => {
-    setIsChatModalOpen(!isChatModalOpen)
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false)
+  const toggleFeedbackModal = () => {
+    setIsFeedbackModalOpen(!isFeedbackModalOpen)
   }
   return (
     <header className="container">
@@ -37,15 +37,15 @@ export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
         <img src={contact} alt="contact" />
         +375-29-557-59-67
       </a>
-      <button className={styles.feedback} onClick={toggleChatModal}>
+      <button className={styles.feedback} onClick={toggleFeedbackModal}>
         <img src={feedback} alt="feedback" />
       </button>
       <HeaderButton to={'favorites'} className={styles.favorites} imgSrc={favorites} alt={'favorites'}></HeaderButton>
       <BasketButton totalQuantityInBasket={totalQuantityInBasket} />
       <HeaderButton to={'account'} className={styles.account} imgSrc={account} alt={'account'}></HeaderButton>
-      {isChatModalOpen && (
-        <Modal open={isChatModalOpen} onClose={toggleChatModal}>
-          <Contacts />
+      {isFeedbackModalOpen && (
+        <Modal open={isFeedbackModalOpen} onClose={toggleFeedbackModal}>
+          <Feedback />
         </Modal>
       )}
     </header>

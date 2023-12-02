@@ -1,6 +1,6 @@
 import styles from './style.module.css'
 
-const Contacts = () => {
+export const Feedback = () => {
   return (
     <>
       <h2 className={styles.title}>How Do You Like Our Website?</h2>
@@ -16,5 +16,3 @@ const Contacts = () => {
     </>
   )
 }
-
-export default Contacts
