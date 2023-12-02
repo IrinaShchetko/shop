@@ -24,6 +24,7 @@ export interface HeaderButtonProps {
   imgSrc: string
   alt: string
   className: string
+  children?: React.ReactNode
 }
 export interface CardInBasketProps {
   item: GoodsProps
@@ -35,4 +36,9 @@ export interface CardInBasketProps {
   onQuantityChangeMinus: () => void
   onQuantityChangePlus: () => void
   quantity: Record<string, number>
+}
+export interface ModalProps {
+  open: boolean
+  onClose: () => void
+  children: React.ReactNode
 }
