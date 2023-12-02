@@ -14,7 +14,7 @@ export const Home = () => {
   const { catalog } = useAppSelector((state: RootStore) => state.catalog)
 
   return (
-    <>
+    <div className="container">
       <div className={styles.wrapper}>
         {catalog.map(product => (
           <div className={styles.category}>
@@ -24,6 +24,6 @@ export const Home = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   )
 }
