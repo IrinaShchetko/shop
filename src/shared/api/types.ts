@@ -25,3 +25,14 @@ export interface HeaderButtonProps {
   alt: string
   className: string
 }
+export interface CardInBasketProps {
+  item: GoodsProps
+  image: string
+  onFavoriteClick: (itemId: number | string, isCurrentlyFavorite: boolean) => void
+  onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
+  isFavorite?: boolean
+  isInBasket?: boolean
+  onQuantityChangeMinus: () => void
+  onQuantityChangePlus: () => void
+  quantity: Record<string, number>
+}
