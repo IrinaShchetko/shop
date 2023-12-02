@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import styles from './basket.module.css'
-import basket from '../../../assets/header/basket.svg'
+import basketSvg from '../../../assets/header/basket.svg'
 import { QuantityInBasketProps } from '../../../shared/api/types'
 
 const BasketButton = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
@@ -8,7 +8,7 @@ const BasketButton = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
     <div className={styles.basketButton}>
       <NavLink to="/basket">
         <button className={styles.basket}>
-          <img src={basket} alt="basket" />
+          <img src={basketSvg} alt="basket" />
           {totalQuantityInBasket > 0 && <span className={styles.quantityIndicator}>{totalQuantityInBasket}</span>}
         </button>
       </NavLink>

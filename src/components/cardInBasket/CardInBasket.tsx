@@ -2,19 +2,8 @@ import { Button } from '../button'
 import unliked from '../../assets/main/unliked.svg'
 import liked from '../../assets/main/liked.svg'
 import styles from './card.module.css'
-import { GoodsProps } from '../../shared/api/types'
+import { CardInBasketProps } from '../../shared/api/types'
 
-interface CardInBasketProps {
-  item: GoodsProps
-  image: string
-  onFavoriteClick: (itemId: number | string, isCurrentlyFavorite: boolean) => void
-  onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
-  isFavorite?: boolean
-  isInBasket?: boolean
-  onQuantityChangeMinus: () => void
-  onQuantityChangePlus: () => void
-  quantity: Record<string, number>
-}
 export const CardInBasket = ({
   item,
   image,
