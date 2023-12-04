@@ -23,8 +23,8 @@ export const Products = () => {
   const categoryData = goods.filter(item => item.category === category) //фильтр товаров по категории
 
   return (
-    <>
-      <div className={styles.products}>
+    <div className="container">
+      <section className={styles.products}>
         {categoryData.map(item => (
           <CardProduct
             key={item._id}
@@ -49,7 +49,7 @@ export const Products = () => {
             isInBasket={basket.some(basketItem => basketItem._id === item._id)}
           />
         ))}
-      </div>
-    </>
+      </section>
+    </div>
   )
 }
