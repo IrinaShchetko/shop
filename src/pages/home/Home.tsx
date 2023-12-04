@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { RootStore } from '../../redux/store'
 import { fetchCatalogThunk } from '../../redux'
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/useRedux'

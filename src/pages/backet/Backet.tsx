@@ -29,39 +29,41 @@ export const Basket = () => {
     console.log('Payment successful!')
   }
   return (
-    <div className={styles.basket}>
-      <div className={styles.goods}>
-        {basket.map(item => {
-          const firstImage = Array.isArray(item.images) ? item.images[0] : item.images
-          return (
-            <CardInBasket
-              item={item}
-              image={firstImage}
-              onQuantityChangePlus={() => handleQuantityChange(item._id, true)}
-              onQuantityChangeMinus={() => handleQuantityChange(item._id, false)}
-              quantity={quantity}
-              onFavoriteClick={() =>
-                handleActionForFavorites(
-                  item,
-                  favorites.some(favoritesItem => favoritesItem._id === item._id),
-                  addToFavoritesAsync,
-                  removeFromFavoritesAsync,
-                )
-              }
-              isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}
-              onBasketClick={() =>
-                handleActionForBasket(
-                  item,
-                  basket.some(basketItem => basketItem._id === item._id),
-                  addToBasketAsync,
-                  removeFromBasketAsync,
-                )
-              }
-            />
-          )
-        })}
-      </div>
-      <BasketSum total={totalSum} onButtonClick={handlePayClick} />
+    <div className="container">
+      <section className={styles.basket}>
+        <div className={styles.goods}>
+          {basket.map(item => {
+            const firstImage = Array.isArray(item.images) ? item.images[0] : item.images
+            return (
+              <CardInBasket
+                item={item}
+                image={firstImage}
+                onQuantityChangePlus={() => handleQuantityChange(item._id, true)}
+                onQuantityChangeMinus={() => handleQuantityChange(item._id, false)}
+                quantity={quantity}
+                onFavoriteClick={() =>
+                  handleActionForFavorites(
+                    item,
+                    favorites.some(favoritesItem => favoritesItem._id === item._id),
+                    addToFavoritesAsync,
+                    removeFromFavoritesAsync,
+                  )
+                }
+                isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}
+                onBasketClick={() =>
+                  handleActionForBasket(
+                    item,
+                    basket.some(basketItem => basketItem._id === item._id),
+                    addToBasketAsync,
+                    removeFromBasketAsync,
+                  )
+                }
+              />
+            )
+          })}
+        </div>
+        <BasketSum total={totalSum} onButtonClick={handlePayClick} />
+      </section>
     </div>
   )
 }
