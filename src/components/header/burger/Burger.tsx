@@ -3,6 +3,7 @@ import styles from './burger.module.css'
 
 interface BurgerProps {
   type: 'button'
+  className: string
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 export const Burger = ({ type }: BurgerProps) => {
@@ -12,12 +13,7 @@ export const Burger = ({ type }: BurgerProps) => {
   }
 
   return (
-    <button
-      className={`${styles.burger} ${stateOfBurger ? 'active' : ''}`}
-      aria-label="open menu"
-      onClick={handlerClick}
-      type={type}
-    >
+    <button className={`${styles.burger} ${stateOfBurger ? 'active' : ''}`} aria-label="open menu" onClick={handlerClick} type={type}>
       <span className={styles.line}></span>
       <span className={styles.line}></span>
       <span className={styles.line}></span>
