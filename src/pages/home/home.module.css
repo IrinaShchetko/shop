@@ -62,14 +62,14 @@
 .category:nth-child(3),
 .category:nth-child(6),
 .category:nth-child(10) {
-  width: 41.71rem;
-  height: 54.86rem;
+  width: 26.71rem;
+  height: 30.5rem;
 }
 
 .category:nth-child(2),
 .category:nth-child(5),
 .category:nth-child(7),
 .category:nth-child(9) {
-  width: 27.43rem;
-  height: 40.57rem;
+  width: 18.25rem;
+  height: 26.03rem;
 }

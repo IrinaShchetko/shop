@@ -18,9 +18,7 @@ export const Home = () => {
       <div className={styles.wrapper}>
         {catalog.map(product => (
           <div className={styles.category}>
-            <Link className={styles.category} key={product.id} to={`${product.category}`}>
-              <CardCategory key={product.id} item={product}></CardCategory>
-            </Link>
+            <CardCategory key={product.id} item={product}></CardCategory>
           </div>
         ))}
       </div>

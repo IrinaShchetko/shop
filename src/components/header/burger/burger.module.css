@@ -12,7 +12,7 @@
 
 .line {
   position: absolute;
-  background-color: white;
+  background-color: black;
   width: 30px;
   height: 2px;
   left: 0;
@@ -21,7 +21,7 @@
 .line:first-child {
   content: '';
   position: absolute;
-  background-color: white;
+  background-color: black;
   width: 30px;
   height: 2px;
   left: 0;
@@ -30,7 +30,7 @@
 .line:last-child {
   content: '';
   position: absolute;
-  background-color: white;
+  background-color: black;
   width: 30px;
   height: 2px;
   left: 0;
