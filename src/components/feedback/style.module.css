@@ -1,3 +1,10 @@
+.content {
+  position: relative;
+  z-index: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
 .title {
   text-align: center;
   margin-bottom: 2rem;

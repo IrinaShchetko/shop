@@ -10,6 +10,13 @@ export interface GoodsProps {
   size: number[]
   color: string[]
 }
+export interface CardProductProps {
+  item: GoodsProps
+  onFavoriteClick: (itemId: number | string, isCurrentlyFavorite: boolean) => void
+  onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
+  isFavorite?: boolean
+  isInBasket?: boolean
+}
 export interface CatalogProps {
   id: number
   category: string
@@ -41,4 +48,8 @@ export interface ModalProps {
   open: boolean
   onClose: () => void
   children: React.ReactNode
+}
+
+export interface ProductImageCarouselProps {
+  images: string[]
 }

@@ -10,7 +10,7 @@ class GoodsApi extends Api {
 
     products.forEach(item => {
       if (Array.isArray(item.images) && item.images.length > 0) {
-        item.images = `${import.meta.env.VITE_BASE_URL}${item.images[0]}`
+        item.images = item.images.map(img => `${import.meta.env.VITE_BASE_URL}${img}`)
       } else if (typeof item.images === 'string') {
         item.images = `${import.meta.env.VITE_BASE_URL}${item.images}`
       }

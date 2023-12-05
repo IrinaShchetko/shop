@@ -17,15 +17,9 @@ export const Modal = ({ open, onClose, children }: ModalProps) => {
   })
   return open
     ? createPortal(
-        //TODO: change click
         <div className={styles.wrapper}>
-          <img className={styles.background} src={background} alt="zebra background" />
-          <div className={styles.content}>
-            <button className={styles.closing} onClick={onClose}>
-              X
-            </button>
-            {children}
-          </div>
+          <img className={styles.background} src={background} alt="zebra background" onClick={onClose} />
+          {children}
         </div>,
         element,
       )

@@ -2,7 +2,7 @@ import styles from './style.module.css'
 
 export const Feedback = () => {
   return (
-    <>
+    <div className={styles.content}>
       <h2 className={styles.title}>How Do You Like Our Website?</h2>
       <form className={styles.form} action="">
         <label className={styles.label} htmlFor="feedback">
@@ -13,6 +13,6 @@ export const Feedback = () => {
           SEND
         </button>
       </form>
-    </>
+    </div>
   )
 }

@@ -20,12 +20,12 @@ export const Products = () => {
     dispatch(fetchGoodsThunk('all'))
   }, [dispatch, category])
 
-  const categoryData = goods.filter(item => item.category === category) //фильтр товаров по категории
+  const filterData = goods.filter(item => item.category === category) //фильтр товаров по категории
 
   return (
     <div className="container">
       <section className={styles.products}>
-        {categoryData.map(item => (
+        {filterData.map(item => (
           <CardProduct
             key={item._id}
             item={item}
