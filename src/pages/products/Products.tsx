@@ -8,6 +8,7 @@ import styles from './products.module.css'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
 import { useActionForButton } from '../../shared/hooks/useActionForButton'
 import { AppPagination } from '../../components/pagination'
+import { Navigation } from '../../components/navigation'
 
 export const Products = () => {
   const { category } = useParams()
@@ -28,9 +29,11 @@ export const Products = () => {
   const isDataAvailable = totalCount > 0 && filterData.length > 0
 
   const currentPageData = filterData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+  const { catalog } = useAppSelector((state: RootStore) => state.catalog)
 
   return (
     <div className="container">
+      <Navigation items={catalog}></Navigation>
       <section className={styles.products}>
         {currentPageData.map(item => (
           <CardProduct

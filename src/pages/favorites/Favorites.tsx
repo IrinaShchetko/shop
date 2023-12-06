@@ -2,12 +2,14 @@ import styles from './favorites.module.css'
 import { CardProduct } from '../../components/cardProduct'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
 import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
+import { BackButton } from '../../components/backButton'
 
 export const Favorites = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
 
   return (
     <div className="container">
+      <BackButton />
       <section className={styles.favorites}>
         {favorites.map(item => {
           const isFavorite = favorites.some(favoritesItem => favoritesItem._id === item._id)
