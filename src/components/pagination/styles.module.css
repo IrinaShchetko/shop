@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.paginationItem {
+  margin-right: 5px;
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* //TODO: color in variable */
+.active {
+  background: linear-gradient(180deg, #fd27c1 19.64%, #bd33fe 77.03%, #931def 143.24%);
+  color: #fff;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: #ddd;
+  color: #666;
+}
+
+.ellipsis {
+  cursor: default;
+  pointer-events: none;
+}
