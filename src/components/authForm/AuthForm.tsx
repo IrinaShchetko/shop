@@ -1,7 +1,14 @@
 import styles from './styles.module.css'
 import background from '../../assets/header/form_background.png'
-
+import { useState } from 'react'
+import openEye from '../../assets/header/openEye.png'
+import closeEye from '../../assets/header/closeEye.png'
 export const AuthForm = () => {
+  const [showPassword, setShowPassword] = useState(false)
+
+  const seePassword = () => {
+    setShowPassword(prevPassword => !prevPassword)
+  }
   return (
     <div className={styles.container}>
       <img className={styles.background} src={background} alt="background" />
@@ -11,23 +18,22 @@ export const AuthForm = () => {
           <label htmlFor="email" className={styles.label}>
             Email
           </label>
-          <input
-            className={styles.input}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter your email..."
-          />
+          <input className={styles.input} type="email" name="email" id="email" placeholder="Enter your email..." />
           <label htmlFor="password" className={styles.label}>
             Password
           </label>
-          <input
-            className={styles.input}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter your password..."
-          />
+          <div className={styles.passwordContainer}>
+            <input
+              className={styles.input}
+              type={showPassword ? 'text' : 'password'}
+              name="password"
+              id="password"
+              placeholder="Enter your password..."
+            />
+            <button className={styles.buttonEye} type="button" onClick={seePassword}>
+              {showPassword ? <img src={closeEye} alt="closeEye" /> : <img src={openEye} alt="openEye" />}
+            </button>
+          </div>
           <button className={styles.submit} type="submit">
             Sign in
           </button>
