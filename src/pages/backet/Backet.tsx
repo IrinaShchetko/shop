@@ -6,6 +6,8 @@ import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFro
 import { useEffect, useState } from 'react'
 import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { basketSlice } from '../../redux/basket/slice'
+import { BackButton } from '../../components/backButton'
+
 //TODO: add function PayClick
 export const Basket = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
@@ -30,6 +32,7 @@ export const Basket = () => {
   }
   return (
     <div className="container">
+      <BackButton />
       <section className={styles.basket}>
         <div className={styles.goods}>
           {basket.map(item => {
