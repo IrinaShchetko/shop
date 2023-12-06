@@ -1,18 +1,12 @@
 import _ from 'lodash'
 import styles from './styles.module.css'
-
-interface PaginationProps {
-  count: number
-  page: number
-  setPage: (page: number) => void
-  currentPage: number
-}
+import { PaginationProps } from '../../shared/api/types'
 
 export const AppPagination = ({ count, page, setPage, currentPage }: PaginationProps) => {
   const total = Math.ceil(count / page)
   const pages = _.range(1, total + 1)
 
-  if (count <= 5) {
+  if (count <= 6) {
     return null
   }
 

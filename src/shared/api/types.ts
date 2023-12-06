@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 export interface GoodsProps {
   _id: string
   vendor_code: string | number
@@ -49,7 +51,18 @@ export interface ModalProps {
   onClose: () => void
   children: React.ReactNode
 }
-
+export interface SearchProps {
+  type: string
+  value: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+  className: string
+}
 export interface ProductImageCarouselProps {
   images: string[]
+}
+export interface PaginationProps {
+  count: number
+  page: number
+  setPage: (page: number) => void
+  currentPage: number
 }
