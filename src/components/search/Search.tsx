@@ -1,18 +1,5 @@
-import { ChangeEvent } from 'react'
+import { SearchProps } from '../../shared/api/types'
 
-interface SearchProps {
-  type: string
-  value: string
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  className: string
-}
 export const Search = ({ type, value, onChange, className }: SearchProps) => {
-  return (
-    <input
-      className={className}
-      type={type}
-      value={value}
-      onChange={onChange}
-    />
-  )
+  return <input className={className} type={type} value={value} onChange={onChange} />
 }
