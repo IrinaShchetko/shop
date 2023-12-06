@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# ZEBRA-shop
 
 ## Getting Started
 
@@ -8,14 +8,24 @@ To get started, you can follow these steps:
 
    ```bash
    npm install
+   ```
+
 2. Start the development server:
 
-    ```bash
-    npm run dev
+   ```bash
+   npm start
+   ```
 
 It will start listening on Port 5173.
 
 ## Technologies Used
 
-This project is built using:
+1. For frontend:
+   *React
+   *Vite
+   \*TypeScript
 
+2. For server:
+   *Node.js
+   *Express.js
+   \*MongoDB
