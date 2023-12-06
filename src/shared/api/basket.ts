@@ -10,11 +10,7 @@ class BasketApi extends Api {
 
     products.forEach(item => {
       if (Array.isArray(item.images) && item.images.length > 0) {
-        const imageUrl = new URL(item.images[0], import.meta.env.VITE_BASE_URL)
-        item.images = imageUrl.href
-      } else if (typeof item.images === 'string') {
-        const imageUrl = new URL(item.images, import.meta.env.VITE_BASE_URL)
-        item.images = imageUrl.href
+        item.images = item.images.map(img => img)
       }
     })
     return products
