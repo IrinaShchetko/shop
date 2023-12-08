@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb'
 export const routerGoods = Router()
 
 
-const url = 'mongodb://127.0.0.1:27017/zebra/'
+const url = 'mongodb+srv://irinashetko92:3215eras@cluster0.ty7dnme.mongodb.net/zebra?retryWrites=true&w=majority'
 const mongoClient = new MongoClient(url)
 async function runCategory(category) {
     try {
