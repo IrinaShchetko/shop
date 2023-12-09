@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { MongoClient, ObjectId } from 'mongodb'
+
 export const routerBasket = Router()
 const url = 'mongodb+srv://irinashetko92:3215eras@cluster0.ty7dnme.mongodb.net/zebra?retryWrites=true&w=majority'
 const mongoClient = new MongoClient(url)
@@ -35,6 +36,28 @@ routerBasket.post('/', async (req, res) => {
     newItem._id = newObjectId
     await collection.insertOne(newItem)
     res.json(newItem)
+  } catch (err) {
+    console.error(err)
+    res.status(500).send('Internal Server Error')
+  }
+})
+routerBasket.put('/:id', async (req, res) => {
+  const itemId = req.params.id
+  const updatedItem = req.body
+
+  try {
+    const db = mongoClient.db('zebra')
+    const collection = db.collection('basket')
+    const objectId = new ObjectId(itemId)
+    const result = await collection.updateOne(
+      { _id: objectId },
+      { $set: { count: updatedItem.count } }
+    )
+    if (result.modifiedCount === 1) {
+      res.json({ success: true })
+    } else {
+      res.status(404).json({ success: false, message: 'Item not found' })
+    }
   } catch (err) {
     console.error(err)
     res.status(500).send('Internal Server Error')
