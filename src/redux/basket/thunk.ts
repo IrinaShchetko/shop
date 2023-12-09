@@ -19,3 +19,14 @@ export const removeFromBasketAsync = createAsyncThunk('basket/removeFromBasket',
   await basketApi.removeFromBasket(item)
   return item._id
 })
+
+//обновляем количество товара для корзины
+export const updateQuantityAsync = createAsyncThunk('basket/updateQuantityAsync', async ({ itemId, count }: { itemId: string; count: number }) => {
+  try {
+    await basketApi.updateBasketItem({ _id: itemId, count })
+    return { itemId, count }
+  } catch (error) {
+    console.error('Error updating quantity in the basket', error)
+    throw error
+  }
+})

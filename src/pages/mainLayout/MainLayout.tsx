@@ -22,7 +22,7 @@ export const MainLayout = () => {
   }, [dispatch])
   const searchData = filteredData(goods) // фильтр товаров согласно поиску
   const handleActionForButton = useActionForButton()
-  const totalQuantityInBasket = basket.reduce(acc => acc + 1, 0)
+  const totalQuantityInBasket = basket.reduce((acc, item) => acc + item.count, 0) //количество для иконки в хеадере
   const pageSize = 6 //кол-во товаров на странице
   const [currentPage, setCurrentPage] = useState(1)
   const totalCount = searchData.length

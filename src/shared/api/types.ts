@@ -11,6 +11,7 @@ export interface GoodsProps {
   'fabric structure': string
   size: number[]
   color: string[]
+  count: number
 }
 export interface CardProductProps {
   item: GoodsProps
@@ -39,12 +40,11 @@ export interface CardInBasketProps {
   item: GoodsProps
   image: string
   onFavoriteClick: (itemId: number | string, isCurrentlyFavorite: boolean) => void
-  onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
+  onBasketClick: () => void
   isFavorite?: boolean
   isInBasket?: boolean
-  onQuantityChangeMinus: () => void
-  onQuantityChangePlus: () => void
-  quantity: Record<string, number>
+  changeValue: (itemId: string, value: number) => void
+  count: number
 }
 export interface ModalProps {
   open: boolean

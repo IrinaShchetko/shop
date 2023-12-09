@@ -16,6 +16,7 @@ export const useActionForButton = () => {
       'fabric structure': item['fabric structure'],
       size: item.size,
       color: item.color,
+      count: item.count,
     }
 
     if (!isCurrentlyInList) {
