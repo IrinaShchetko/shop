@@ -7,6 +7,7 @@ import { Button } from '../button/index'
 import { useState } from 'react'
 import { Modal } from '../modal'
 import { ProductImageCarousel } from '../productImageCarousel'
+import { Link } from 'react-router-dom'
 
 export const CardProduct: React.FC<CardProductProps> = ({ item, onFavoriteClick, onBasketClick, isFavorite = false, isInBasket = false }) => {
   const firstImage = Array.isArray(item.images) ? item.images[0] : item.images
@@ -17,7 +18,9 @@ export const CardProduct: React.FC<CardProductProps> = ({ item, onFavoriteClick,
 
   return (
     <div className={styles.product}>
-      <img className={styles.img} src={firstImage} alt={item.title} />
+      <Link key={item._id} to={`/desc/${item._id}`}>
+        <img className={styles.img} src={firstImage} alt={item.title} />
+      </Link>
       <Button className={styles.favorites} item={item} typeButton="favorites" onButtonClick={onFavoriteClick}>
         <img src={isFavorite ? liked : unliked} alt={isFavorite ? liked : unliked} />
       </Button>

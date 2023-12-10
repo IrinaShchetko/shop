@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, ReactNode } from 'react'
 
 export interface GoodsProps {
   _id: string
@@ -7,8 +7,10 @@ export interface GoodsProps {
   desc: string
   price: number
   images: string | string[]
+  'washing instructions'?: string
   category: string
   'fabric structure': string
+  'fabric density'?: string
   size: number[]
   color: string[]
   count: number
@@ -20,6 +22,14 @@ export interface CardProductProps {
   isFavorite?: boolean
   isInBasket?: boolean
 }
+export interface DescProps {
+  product: GoodsProps
+  onFavoriteClick: (itemId: number | string, isCurrentlyFavorite: boolean) => void
+  onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
+  isFavorite?: boolean
+  isInBasket?: boolean
+}
+
 export interface CatalogProps {
   id: number
   category: string
@@ -65,4 +75,12 @@ export interface PaginationProps {
   page: number
   setPage: (page: number) => void
   currentPage: number
+}
+export interface SavingButtonProps {
+  item: GoodsProps
+  className: string
+  onButtonClick: (itemId: string, isCurrentlySave: boolean, actionType: 'favorites' | 'basket') => void
+  isSaving?: boolean
+  typeButton: 'favorites' | 'basket'
+  children: ReactNode
 }

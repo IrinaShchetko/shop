@@ -1,0 +1,17 @@
+.gallery {
+  display: flex;
+  justify-content: center;
+}
+
+.photoContainer {
+  margin: 0 5px;
+}
+
+.photo {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.photo:hover {
+  transform: scale(1.2);
+}
