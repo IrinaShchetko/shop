@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Authorization, Basket, Favorites, Home, MainLayout, Products } from './pages'
+import { Authorization, Basket, Description, Favorites, Home, MainLayout, Products } from './pages'
 
 function App() {
   return (
@@ -16,8 +16,9 @@ function App() {
 
             {/* страница хоум - каталог */}
             <Route path="/" element={<Home />} />
-            {/* страница платья */}
+            {/* страница товары категории */}
             <Route path="/:category" element={<Products />} />
+            <Route path="/desc/:productId" element={<Description />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
