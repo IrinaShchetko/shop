@@ -1,51 +1,42 @@
+import React from 'react'
 import styles from './styles.module.css'
 import background from '../../assets/header/form_background.png'
-import { useState } from 'react'
 import openEye from '../../assets/header/openEye.png'
 import closeEye from '../../assets/header/closeEye.png'
-export const AuthForm = () => {
-  const [showPassword, setShowPassword] = useState(false)
 
-  const seePassword = () => {
-    setShowPassword(prevPassword => !prevPassword)
-  }
+interface AuthFormProps {
+  handleSubmit: () => void
+  showPassword: boolean
+  seePassword: () => void
+}
+
+export const AuthForm: React.FC<AuthFormProps> = ({ handleSubmit, showPassword, seePassword }) => {
   return (
     <div className={styles.container}>
-      <img className={styles.background} src={background} alt="background" />
       <div className={styles.wrapper}>
+        <img className={styles.background} src={background} alt="background" />
         <h2 className={styles.title}>Sign-In</h2>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <label htmlFor="email" className={styles.label}>
             Email
+            <input className={styles.input} type="email" name="email" id="email" placeholder="Enter your email.." />
           </label>
-          <input className={styles.input} type="email" name="email" id="email" placeholder="Enter your email..." />
           <label htmlFor="password" className={styles.label}>
-            Password
-          </label>
-          <div className={styles.passwordContainer}>
-            <input
-              className={styles.input}
-              type={showPassword ? 'text' : 'password'}
-              name="password"
-              id="password"
-              placeholder="Enter your password..."
-            />
-            <button className={styles.buttonEye} type="button" onClick={seePassword}>
+            Password:
+            <input type={showPassword ? 'text' : 'password'} name="password" id="password" placeholder="Enter your password..." />
+            <button className={styles.eye} type="button" onClick={seePassword}>
               {showPassword ? <img src={closeEye} alt="closeEye" /> : <img src={openEye} alt="openEye" />}
             </button>
-          </div>
+          </label>
+          {/* <button className={styles.submit} type="submit">
+            Login
+          </button> */}
+          {/* <div className={styles.registration}> */}
           <button className={styles.submit} type="submit">
-            Sign in
+            Create your ZEBRA account
           </button>
+          {/* </div> */}
         </form>
-        {/* <div className={styles.addititional}>
-        <p className={styles.desc} >More sign in options</p>
-        <button className={styles.submit}>Login with Google</button>
-        </div> */}
-        <div className={styles.registration}>
-          <p className={styles.desc}>New to zebra.com</p>
-          <button className={styles.submit}>Create your ZEBRA account</button>
-        </div>
       </div>
     </div>
   )
