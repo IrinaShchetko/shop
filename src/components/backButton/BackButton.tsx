@@ -5,7 +5,7 @@ export const BackButton = () => {
   const navigate = useNavigate()
 
   const navigateToHome = () => {
-    navigate('/')
+    navigate(-1)
   }
   //TODO: add styles
   return (

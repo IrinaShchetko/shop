@@ -4,6 +4,7 @@ import { RootStore } from '../../redux/store'
 import { useAppSelector } from '../../shared/hooks/useRedux'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
 import { useActionForButton } from '../../shared/hooks/useActionForButton'
+import { BackButton } from '../../components/backButton'
 
 export const Description = () => {
   const { goods } = useAppSelector((state: RootStore) => state.goods)
@@ -18,27 +19,30 @@ export const Description = () => {
   const handleActionForButton = useActionForButton()
 
   return (
-    <Desc
-      key={selectedProduct._id}
-      product={selectedProduct}
-      onFavoriteClick={() =>
-        handleActionForButton(
-          selectedProduct,
-          favorites.some(favoritesItem => favoritesItem._id === selectedProduct._id),
-          addToFavoritesAsync,
-          removeFromFavoritesAsync,
-        )
-      }
-      isFavorite={favorites.some(favoritesItem => favoritesItem._id === selectedProduct._id)}
-      onBasketClick={() =>
-        handleActionForButton(
-          selectedProduct,
-          basket.some(basketItem => basketItem._id === selectedProduct._id),
-          addToBasketAsync,
-          removeFromBasketAsync,
-        )
-      }
-      isInBasket={basket.some(basketItem => basketItem._id === selectedProduct._id)}
-    />
+    <div className="container">
+      <BackButton />
+      <Desc
+        key={selectedProduct._id}
+        product={selectedProduct}
+        onFavoriteClick={() =>
+          handleActionForButton(
+            selectedProduct,
+            favorites.some(favoritesItem => favoritesItem._id === selectedProduct._id),
+            addToFavoritesAsync,
+            removeFromFavoritesAsync,
+          )
+        }
+        isFavorite={favorites.some(favoritesItem => favoritesItem._id === selectedProduct._id)}
+        onBasketClick={() =>
+          handleActionForButton(
+            selectedProduct,
+            basket.some(basketItem => basketItem._id === selectedProduct._id),
+            addToBasketAsync,
+            removeFromBasketAsync,
+          )
+        }
+        isInBasket={basket.some(basketItem => basketItem._id === selectedProduct._id)}
+      />
+    </div>
   )
 }

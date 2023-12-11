@@ -34,6 +34,8 @@ export const ProductImageCarousel: React.FC<ProductImageCarouselProps> = ({ imag
           </button>
           {displayImages.map((image, index) => (
             <img
+              width={400}
+              height={400}
               key={index}
               className={`${index === 1 ? styles.centralImage : styles.additionalImage}`}
               src={image}
