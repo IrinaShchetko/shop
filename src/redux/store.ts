@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { basketReducer, catalogReducer, favoritesReducer, goodsReducer, searchReducer } from '.'
+import { basketReducer, catalogReducer, favoritesReducer, goodsReducer, searchReducer, authReducer } from '.'
 import { combineReducers } from 'redux'
 
 export const reducers = combineReducers({
@@ -8,6 +8,7 @@ export const reducers = combineReducers({
   favorites: favoritesReducer,
   basket: basketReducer,
   search: searchReducer,
+  auth: authReducer,
 })
 export const store = configureStore({
   reducer: reducers,

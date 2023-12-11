@@ -84,3 +84,24 @@ export interface SavingButtonProps {
   typeButton: 'favorites' | 'basket'
   children: ReactNode
 }
+export interface UserProps {
+  email?: string
+  id?: string
+  password?: string
+}
+export interface AuthResponseProps {
+  accessToken: string
+  refreshToken: string
+  user: UserProps
+}
+export interface SuccessResponse<T> {
+  success: true
+  data: T
+}
+
+export interface ErrorResponse {
+  success: false
+  error?: string
+}
+
+export type Response<T = never> = ErrorResponse | SuccessResponse<T>

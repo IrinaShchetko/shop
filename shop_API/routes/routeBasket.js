@@ -1,8 +1,10 @@
 import { Router } from 'express'
 import { MongoClient, ObjectId } from 'mongodb'
+import { config } from 'dotenv'
 
 export const routerBasket = Router()
-const url = 'mongodb+srv://irinashetko92:3215eras@cluster0.ty7dnme.mongodb.net/zebra?retryWrites=true&w=majority'
+config()
+const url = process.env.MONGO_DB
 const mongoClient = new MongoClient(url)
 
 async function runBasket() {

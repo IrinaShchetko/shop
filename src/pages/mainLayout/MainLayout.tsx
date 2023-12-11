@@ -37,6 +37,7 @@ export const MainLayout = () => {
           <div className={styles.products}>
             {currentPageData.map(item => (
               <CardProduct
+                key={item._id}
                 item={item}
                 onFavoriteClick={() =>
                   handleActionForButton(

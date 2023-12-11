@@ -1,9 +1,10 @@
 import { Router } from 'express'
 import { MongoClient } from 'mongodb'
+import { config } from 'dotenv'
+
 export const routerGoods = Router()
-
-
-const url = 'mongodb+srv://irinashetko92:3215eras@cluster0.ty7dnme.mongodb.net/zebra?retryWrites=true&w=majority'
+config()
+const url = process.env.MONGO_DB
 const mongoClient = new MongoClient(url)
 async function runCategory(category) {
     try {

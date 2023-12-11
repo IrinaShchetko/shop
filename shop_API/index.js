@@ -3,26 +3,36 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import { router } from './routes/routes.js'
 import { MongoClient } from 'mongodb'
+import cookieParser from 'cookie-parser'
+import { config } from 'dotenv'
 
-const url = "mongodb+srv://irinashetko92:3215eras@cluster0.ty7dnme.mongodb.net/zebra?retryWrites=true&w=majority"
+// для использования переменных из .env
+config()
+const url = `${process.env.MONGO_DB}?connectTimeoutMS=30000`
 const mongoClient = new MongoClient(url)
 
 const app = express()
 app.use(express.static('assets'))
-app.use(cors())
-app.use(bodyParser.json())
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  }),
+)
 
-const connectToDatabase = () => new Promise((resolve, reject) => {
-  mongoClient.connect()
-    .then(() => {
-      console.log("Connected to the database")
-      resolve()
-    })
-    .catch((err) => {
-      console.error("Error connecting to the database:", err)
-      reject(err)
-    })
-})
+app.use(bodyParser.json())
+app.use(cookieParser())
+
+const connectToDatabase = async () => {
+  try {
+    await mongoClient.connect()
+    console.log('Подключено к базе данных')
+  } catch (err) {
+    console.error('Ошибка подключения к базе данных:', err)
+    throw new Error('Внутренняя ошибка сервера')
+  }
+}
 
 connectToDatabase()
   .then(() => {
@@ -33,6 +43,6 @@ connectToDatabase()
       console.log(`Listening on Port: ${port}`)
     })
   })
-  .catch((err) => {
-    console.error("Error starting the server:", err)
+  .catch(err => {
+    console.error('Error starting the server:', err)
   })
