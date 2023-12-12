@@ -49,4 +49,3 @@ export const Authorization: React.FC = () => {
 
   return <AuthForm handleSubmit={handleRegistration} showPassword={showPassword} seePassword={seePassword} />
 }
-S

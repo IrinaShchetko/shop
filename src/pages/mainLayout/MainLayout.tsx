@@ -30,7 +30,7 @@ export const MainLayout = () => {
 
   const currentPageData = searchData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
   return (
-    <>
+    <div className="container">
       <Header totalQuantityInBasket={totalQuantityInBasket} />
       {searchValue ? (
         <>
@@ -69,6 +69,6 @@ export const MainLayout = () => {
       ) : (
         <Outlet />
       )}
-    </>
+    </div>
   )
 }
