@@ -17,10 +17,10 @@ export const Modal = ({ open, onClose, children }: ModalProps) => {
   })
   return open
     ? createPortal(
-        <div className={styles.wrapper}>
+        <dialog className={styles.wrapper}>
           <img className={styles.background} src={background} alt="zebra background" onClick={onClose} />
           {children}
-        </div>,
+        </dialog>,
         element,
       )
     : null
