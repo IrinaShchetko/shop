@@ -36,7 +36,7 @@ export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
         <Search className={styles.search} type="text" value={searchValue} onChange={handleInput} />
         <a href="tel:+375295575967" className={styles.contact}>
           <img src={contact} alt="contact" />
-          +375-29-557-59-67
+          +375-29-557-59-**
         </a>
         <button className={styles.feedback} onClick={toggleFeedbackModal}>
           <img src={feedback} alt="feedback" />

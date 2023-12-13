@@ -20,15 +20,26 @@ export const MainLayout = () => {
   useEffect(() => {
     dispatch(fetchGoodsThunk('all'))
   }, [dispatch])
-  const searchData = filteredData(goods) // фильтр товаров согласно поиску
+  const searchData = filteredData(goods)
   const handleActionForButton = useActionForButton()
-  const totalQuantityInBasket = basket.reduce((acc, item) => acc + item.count, 0) //количество для иконки в хеадере
-  const pageSize = 6 //кол-во товаров на странице
+  const pageSize = 6
   const [currentPage, setCurrentPage] = useState(1)
   const totalCount = searchData.length
   const isDataAvailable = totalCount > 0 && searchData.length > 0
 
   const currentPageData = searchData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [totalQuantityInBasket, setTotalQuantityInBasket] = useState(0)
+
+  useEffect(() => {
+    const refresh = localStorage.getItem('refreshToken')
+    setIsAuthenticated(!!refresh)
+
+    if (isAuthenticated) {
+      setTotalQuantityInBasket(basket.reduce((acc, item) => acc + item.count, 0))
+    }
+  }, [isAuthenticated, basket])
+
   return (
     <div className="container">
       <Header totalQuantityInBasket={totalQuantityInBasket} />

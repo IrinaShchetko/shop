@@ -16,7 +16,7 @@ class TokenService {
             expiresIn: '1m',
         })
         const refreshToken = jwt.sign(payload, process.env.JWT_PRIVATE_REFRESH, {
-            expiresIn: '3m',
+            expiresIn: '1d',
         })
         return {
             accessToken,
@@ -135,6 +135,11 @@ class UserService {
             if (!user) {
                 throw new Error('Пользователь не найден')
             }
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+
+            if (!isPasswordValid) {
+                throw new Error('Неверный пароль');
+            }
 
             const tokenService = new TokenService()
             const existingTokenData = await tokenService.getTokenByUserId(user._id)
@@ -180,10 +185,6 @@ class UserService {
             if (!userData) {
                 throw new Error('Токен обновления недействителен')
             }
-
-            // Ваш код обновления токенов здесь
-
-            // Пример обновления токенов:
             const newTokens = tokenService.generateTokens({ userId: userData.userId })
             await tokenService.saveToken(userData.userId, newTokens.refreshToken)
 
@@ -285,4 +286,4 @@ routerAuth.post('/registration', userController.registration)
 routerAuth.post('/login', userController.login)
 routerAuth.post('/logout', userController.logout)
 routerAuth.post('/refresh', userController.refresh)
-// routerAuth.get('/users', userController.getUsers);
+

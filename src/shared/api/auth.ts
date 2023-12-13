@@ -1,62 +1,54 @@
-// import axios, { AxiosResponse } from 'axios'
-// import { AuthResponseProps } from './types'
+const endpoint = 'auth/'
 
-// export const API_URL = 'http://localhost:5500/auth'
-
-// export const authpi = axios.create({
-//   withCredentials: true,
-//   baseURL: API_URL,
-// })
-
-// authpi.interceptors.request.use(config => {
-//   config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
-//   return config
-// })
-
-// export class AuthApi {
-//   static async login(email: string, password: string): Promise<AxiosResponse<AuthResponseProps>> {
-//     return authpi.post<AuthResponseProps>('/login', { email, password })
-//   }
-//   static async registration(email: string, password: string): Promise<AxiosResponse<AuthResponseProps>> {
-//     return authpi.post<AuthResponseProps>('/registration', { email, password })
-//   }
-//   static async logout(): Promise<void> {
-//     return authpi.post('/logout')
-//   }
-// }
-import axios from 'axios'
-import Api from '.'
-import { Response } from './types'
-
-class AuthApi extends Api {
-  endpoint = '/auth'
-
-  constructor() {
-    const API_URL = 'http://localhost:5500'
-    super()
-    this.api = axios.create({
-      withCredentials: true,
-      baseURL: API_URL,
+export const registerUser = async (email: string, password: string) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/${endpoint}/registration`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
     })
-  }
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
 
-  async login(email: string, password: string) {
-    console.log('API Login called')
-    return (await this.api.post<Response<{ accessToken: string; refreshToken: string }>>(`${this.endpoint}/login`, { email, password })).data
-  }
+    const data = await response.json()
 
-  async registration(email: string, password: string) {
-    console.log('API Регистрация called')
-    return (await this.api.post<Response<{ accessToken: string; refreshToken: string }>>(`${this.endpoint}/registration`, { email, password })).data
-  }
+    const { accessToken, refreshToken } = data
+    const statusCode = response.status
 
-  async logout() {
-    return await this.api.post<Response<void>>(`${this.endpoint}/logout`)
-  }
-
-  async refresh() {
-    return (await this.api.post<Response<{ accessToken: string; refreshToken: string }>>(`${this.endpoint}/refresh`)).data
+    return { accessToken, refreshToken, statusCode }
+  } catch (error) {
+    console.error('Error during login:', error)
+    throw error
   }
 }
 
-export default new AuthApi()
+export const loginUser = async (email: string, password: string) => {
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/${endpoint}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+
+    const data = await response.json()
+
+    const { accessToken, refreshToken } = data
+    console.log(`Refresh token: ${refreshToken}`)
+    console.log(`Access token: ${accessToken}`)
+    const statusCode = response.status
+
+    return { accessToken, refreshToken, statusCode }
+  } catch (error) {
+    console.error('Error during login:', error)
+    throw error
+  }
+}
