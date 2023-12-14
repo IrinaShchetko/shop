@@ -4,12 +4,12 @@
   flex-direction: column;
 }
 
-.desc {
+.title {
   color: var(--main-text-color);
   padding: 20px;
   text-align: center;
   position: absolute;
-  background-color: var(--main-background-color);
+  background-color: var(--main-background-color 0.8);
   border-radius: 15px;
   box-shadow: var(--hover-shadow-button);
 }
