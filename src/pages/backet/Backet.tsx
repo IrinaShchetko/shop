@@ -6,7 +6,7 @@ import { CardInBasket } from '../../components/cardInBasket'
 import { addToBasketAsync, removeFromBasketAsync, updateQuantityAsync } from '../../redux'
 import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { BackButton } from '../../components/backButton'
-import { useBasket } from '../../shared/context/BasketContext'
+import { usePrivate } from '../../shared/context/PrivateContext'
 
 // // TODO: добавить функцию PayClick
 // //TODO: доделать token
@@ -14,7 +14,7 @@ export const Basket = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
   const dispatch = useAppDispatch()
   const [totalSum, setTotalSum] = useState(0)
-  const { basketCountVisibility, updateBasketCount } = useBasket()
+  const { privateVisibility, updateBasketCount } = usePrivate()
 
   useEffect(() => {
     updateBasketCount()
@@ -41,7 +41,7 @@ export const Basket = () => {
     <div className="container">
       <>
         <BackButton />
-        {basketCountVisibility ? (
+        {privateVisibility ? (
           <section className={styles.basket}>
             <div className={styles.goods}>
               {basket.map(item => (

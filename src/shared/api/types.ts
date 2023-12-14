@@ -99,7 +99,7 @@ export interface BasketSumProps {
   onButtonClick: () => void
 }
 export interface BasketContextProps {
-  basketCountVisibility: boolean
+  privateVisibility: boolean
   updateBasketCount: () => void
   basketCount: number
 }
