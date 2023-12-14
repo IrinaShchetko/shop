@@ -10,6 +10,7 @@ import { useActionForButton } from '../../shared/hooks/useActionForButton'
 import { CardProduct } from '../../components/cardProduct'
 import styles from './main.module.css'
 import { AppPagination } from '../../components/pagination'
+import { useBasket } from '../../shared/context/BasketContext'
 
 export const MainLayout = () => {
   const { basket, favorites } = useFavoritesAndBasket()
@@ -28,21 +29,15 @@ export const MainLayout = () => {
   const isDataAvailable = totalCount > 0 && searchData.length > 0
 
   const currentPageData = searchData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [totalQuantityInBasket, setTotalQuantityInBasket] = useState(0)
 
+  const { basketCount, basketCountVisibility, updateBasketCount } = useBasket()
   useEffect(() => {
-    const refresh = localStorage.getItem('refreshToken')
-    setIsAuthenticated(!!refresh)
-
-    if (isAuthenticated) {
-      setTotalQuantityInBasket(basket.reduce((acc, item) => acc + item.count, 0))
-    }
-  }, [isAuthenticated, basket])
+    updateBasketCount()
+  }, [])
 
   return (
     <div className="container">
-      <Header totalQuantityInBasket={totalQuantityInBasket} />
+      {basketCountVisibility ? <Header totalQuantityInBasket={basketCount} /> : <Header totalQuantityInBasket={0} />}
       {searchValue ? (
         <>
           <div className={styles.products}>

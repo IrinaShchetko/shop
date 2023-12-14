@@ -94,3 +94,12 @@ export interface AuthResponseProps {
   refreshToken: string
   user: UserProps
 }
+export interface BasketSumProps {
+  total: number
+  onButtonClick: () => void
+}
+export interface BasketContextProps {
+  basketCountVisibility: boolean
+  updateBasketCount: () => void
+  basketCount: number
+}
