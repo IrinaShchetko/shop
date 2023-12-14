@@ -1,31 +1,40 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { CatalogProps } from '../../shared/api/types'
+import { useNavigate } from 'react-router-dom'
 import styles from './style.module.css'
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { useAppSelector } from '../../shared/hooks/useRedux'
+import { RootStore } from '../../redux/store'
+import { useState } from 'react'
 
-interface NavigationProps {
-  items: CatalogProps[]
-}
 //TODO: add styles
-export const Navigation: React.FC<NavigationProps> = ({ items }) => {
+export const Navigation = () => {
   const navigate = useNavigate()
-  const location = useLocation()
 
   const handleNavigation = (category: string) => {
     navigate(category === 'home' ? '/' : `/${category}`)
   }
-  //TODO: add styles
+  const { catalog } = useAppSelector((state: RootStore) => state.catalog)
+  const [nav, setNav] = useState(false)
+  const handleNav = () => {
+    setNav(!nav)
+  }
+
   return (
-    <form className={styles.dropdown}>
-      <select className={styles.select} onChange={event => handleNavigation(event.target.value)} value={location.pathname.substring(1)}>
-        <option className={styles.option} value="home">
-          HOME
-        </option>
-        {items.map(categoryItem => (
-          <option className={styles.option} key={categoryItem.id} value={categoryItem.category}>
-            {categoryItem.category}
-          </option>
-        ))}
-      </select>
-    </form>
+    <div className={styles.navigation}>
+      <button className={styles.burger} onClick={handleNav}>
+        {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
+      </button>
+      {nav && (
+        <ul className={styles.dropdown}>
+          <li className={styles.option} onClick={() => handleNavigation('home')}>
+            HOME
+          </li>
+          {catalog.map(categoryItem => (
+            <li className={styles.option} key={categoryItem.id} value={categoryItem.category} onClick={() => handleNavigation(categoryItem.category)}>
+              {categoryItem.category}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   )
 }

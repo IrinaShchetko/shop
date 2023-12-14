@@ -5,7 +5,6 @@ import feedback from '../../assets/header/chat.svg'
 import favorites from '../../assets/header/favorites.svg'
 import account from '../../assets/header/user.svg'
 import logo from '../../assets/header/zebra1.svg'
-import { Burger } from './burger'
 import { useState } from 'react'
 import { Search } from '../search'
 import { useSearch } from '../../shared/hooks/useSearch'
@@ -14,12 +13,9 @@ import { QuantityInBasketProps } from '../../shared/api/types'
 import { HeaderButton } from './button'
 import { Modal } from '../modal'
 import { Feedback } from '../feedback'
-//TODO: add styles
+import { Navigation } from '../navigation'
+
 export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
-  const [stateOfBurger, setStateOfBurger] = useState(false)
-  function handlerClick() {
-    setStateOfBurger(!stateOfBurger)
-  }
   const { searchValue, handleInput } = useSearch()
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false)
   const toggleFeedbackModal = () => {
@@ -32,7 +28,7 @@ export const Header = ({ totalQuantityInBasket }: QuantityInBasketProps) => {
         <img className={styles.logo} src={logo} alt="logo of website" />
       </div>
       <div className={styles.navigation}>
-        <Burger className={styles.burger} type={'button'} onClick={handlerClick} />
+        <Navigation />
         <Search className={styles.search} type="text" value={searchValue} onChange={handleInput} />
         <a href="tel:+375295575967" className={styles.contact}>
           <img src={contact} alt="contact" />

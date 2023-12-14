@@ -8,18 +8,19 @@ import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { BackButton } from '../../components/backButton'
 
 // TODO: добавить функцию PayClick
+//TODO: доделать token
 export const Basket = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
   const dispatch = useAppDispatch()
   const [totalSum, setTotalSum] = useState(0)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const handleBasket = () => {
+  const handleBasketPrivate = () => {
     const refresh = localStorage.getItem('refreshToken')
     setIsAuthenticated(!!refresh)
   }
 
   useEffect(() => {
-    handleBasket()
+    handleBasketPrivate()
   }, [])
 
   useEffect(() => {
