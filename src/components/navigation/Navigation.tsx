@@ -11,6 +11,7 @@ export const Navigation = () => {
 
   const handleNavigation = (category: string) => {
     navigate(category === 'home' ? '/' : `/${category}`)
+    setNav(false)
   }
   const { catalog } = useAppSelector((state: RootStore) => state.catalog)
   const [nav, setNav] = useState(false)
