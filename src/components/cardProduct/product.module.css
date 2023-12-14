@@ -38,13 +38,13 @@
   margin-top: 3%;
 }
 .basket {
-  background: linear-gradient(180deg, #fd27c1 19.64%, #bd33fe 77.03%, #931def 143.24%);
+  background: var(--main-button-color);
   border: none;
-  color: white;
+  color: var(--add-text-color);
   padding: 10px 20px;
   border-radius: 1rem;
 }
 .basket:hover {
-  background: linear-gradient(180deg, #a1177a 19.64%, #9c26d2 77.03%, #7318b8 143.24%);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--hover-button-color);
+  box-shadow: var(--hover-shadow-button);
 }

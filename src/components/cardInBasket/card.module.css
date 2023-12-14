@@ -31,9 +31,7 @@
 .quantity_increase {
   background-color: grey;
 }
-.quantity__input {
-  background-color: grey;
-}
+
 .remove__basket {
   grid-column: 3;
   grid-row: 2;

@@ -21,8 +21,8 @@ export const Authorization: React.FC = () => {
     try {
       const userData = await registerUser(email, password)
       dispatch(setAuthData(userData))
-      userData.refreshToken
-      localStorage.setItem('refreshToken', userData.refreshToken)
+
+      localStorage.setItem('accessToken', userData.accessToken)
       if (userData.statusCode === 200) {
         navigation('/')
       } else {
@@ -37,7 +37,7 @@ export const Authorization: React.FC = () => {
     try {
       const userData = await loginUser(email, password)
       dispatch(setAuthData(userData))
-      localStorage.setItem('refreshToken', userData.refreshToken)
+      localStorage.setItem('accessToken', userData.accessToken)
       if (userData.statusCode === 200) {
         navigation('/')
       } else {
@@ -56,14 +56,13 @@ export const Authorization: React.FC = () => {
     setPassword(e.target.value)
   }
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const handleBasket = () => {
-    //TODO: сравнивать токены, сейчас заглушка чтобы что-то было сохранено
-    const refreshToken = localStorage.getItem('refreshToken')
-    setIsAuthenticated(!!refreshToken)
+  const handleAccountVisability = () => {
+    const accessToken = localStorage.getItem('accessToken')
+    setIsAuthenticated(!!accessToken)
   }
 
   useEffect(() => {
-    handleBasket()
+    handleAccountVisability()
   }, [])
   const handleLogOut = () => {
     localStorage.clear()
@@ -73,10 +72,9 @@ export const Authorization: React.FC = () => {
   return (
     <>
       {isAuthenticated ? (
-        //TODO: styles
         <div className={styles.account}>
-          <h2>Welcome to your Zebra account</h2>
-          <p>Here you can see all the information about your purchases</p>
+          <h2 className={styles.greeting}>Welcome to your Zebra account</h2>
+          <p className={styles.info}>Here you can see all the information about your purchases</p>
           <button className={styles.logout} onClick={handleLogOut}>
             log out
           </button>
