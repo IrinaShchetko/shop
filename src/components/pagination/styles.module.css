@@ -8,22 +8,22 @@
 .paginationItem {
   margin-right: 5px;
   text-decoration: none;
-  color: #333;
+  color: var(--main-text-color);
   padding: 5px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--main-background-color);
   border-radius: 4px;
   cursor: pointer;
 }
-/* //TODO: color in variable */
+
 .active {
-  background: linear-gradient(180deg, #fd27c1 19.64%, #bd33fe 77.03%, #931def 143.24%);
-  color: #fff;
+  background: var(--main-button-color);
+  color: var(--add-text-color);
 }
 
 .disabled {
   pointer-events: none;
-  background-color: #ddd;
-  color: #666;
+  background-color: var(--main-background-color);
+  color: var(--main-text-color);
 }
 
 .ellipsis {

@@ -14,8 +14,8 @@
 }
 
 .button {
-  background-color: #ddd;
-  border: 1px solid #999;
+  background-color: var(--main-background-color);
+  border: 1px solid var(--main-background-color);
   padding: 5px 10px;
   margin: 0 5px;
   cursor: pointer;
@@ -29,8 +29,6 @@
 }
 
 .centralImage {
-  /* width: 40%;
-  height: 40%; */
   margin: 0 5px;
   border-radius: 1.875rem;
 }
