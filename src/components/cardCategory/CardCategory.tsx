@@ -10,7 +10,7 @@ export const CardCategory: React.FC<CategoryProps> = ({ item }) => {
     <>
       <Link className={styles.category} key={item.id} to={`${item.category}`}>
         <img className={styles.img} src={item.img} alt={`photo of ${item.category}`} />
-        <h2 className={styles.desc}>{item.category}</h2>
+        <h2 className={styles.title}>{item.category}</h2>
       </Link>
     </>
   )

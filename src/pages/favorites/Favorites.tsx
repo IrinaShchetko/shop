@@ -1,13 +1,25 @@
 import styles from './favorites.module.css'
 import { CardProduct } from '../../components/cardProduct'
+import { useNavigate } from 'react-router-dom'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
 import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
 import { BackButton } from '../../components/backButton'
 import { usePrivate } from '../../shared/context/PrivateContext'
+import { useEffect } from 'react'
 
 export const Favorites = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
   const { privateVisibility } = usePrivate()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!privateVisibility) {
+      const timeoutId = setTimeout(() => {
+        navigate('/account', { replace: true })
+      }, 1000)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [navigate, privateVisibility])
 
   return (
     <div className="container">

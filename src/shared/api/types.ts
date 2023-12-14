@@ -36,8 +36,9 @@ export interface CatalogProps {
   img: string
   goods: GoodsProps[]
 }
-export interface QuantityInBasketProps {
+export interface BasketProps {
   totalQuantityInBasket: number
+  className?: string
 }
 export interface HeaderButtonProps {
   to: string

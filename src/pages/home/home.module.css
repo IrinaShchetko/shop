@@ -73,3 +73,34 @@
   width: 18.25rem;
   height: 26.03rem;
 }
+
+@media (max-width: 1024px) {
+  .wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: start;
+    grid-template-areas:
+      'a'
+      'b'
+      'c'
+      'd'
+      'e'
+      'f'
+      'm'
+      'n'
+      'o'
+      'p';
+  }
+  .category:nth-child(1),
+  .category:nth-child(4),
+  .category:nth-child(8),
+  .category:nth-child(3),
+  .category:nth-child(6),
+  .category:nth-child(10),
+  .category:nth-child(2),
+  .category:nth-child(5),
+  .category:nth-child(7),
+  .category:nth-child(9) {
+    width: calc(100vw - 2rem);
+    height: 30%;
+  }
+}
