@@ -2,7 +2,7 @@ import unliked from '../../../assets/main/unliked.svg'
 import liked from '../../../assets/main/liked.svg'
 import { DescProps } from '../../../shared/api/types'
 import styles from './styles.module.css'
-import { Button } from '../../button'
+import { Button } from '../../buttonFavAndBasket'
 import { ProductImageCarousel } from '../../productImageCarousel'
 
 export const Desc = ({ product, onBasketClick, onFavoriteClick, isFavorite = false, isInBasket = false }: DescProps) => {

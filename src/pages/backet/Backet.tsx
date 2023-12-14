@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import styles from './backet.module.css'
+import styles from './styles.module.css'
 import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
 import { BasketSum } from '../../components/basketSum'
 import { CardInBasket } from '../../components/cardInBasket'
@@ -84,7 +84,7 @@ export const Basket = () => {
             <BasketSum total={totalSum} onButtonClick={handlePayClick} />
           </section>
         ) : (
-          <p>Please log in or register to view your basket.</p>
+          <h2 className={styles.greeting}>Please log in or register to view your basket.</h2>
         )}
       </>
     </div>

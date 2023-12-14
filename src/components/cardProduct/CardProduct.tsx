@@ -1,9 +1,9 @@
 import unliked from '../../assets/main/unliked.svg'
 import liked from '../../assets/main/liked.svg'
 import loupe from '../../assets/main/loupe.svg'
-import styles from './product.module.css'
+import styles from './styles.module.css'
 import { CardProductProps } from '../../shared/api/types'
-import { Button } from '../button/index'
+import { ButtonFavAndBasket } from '../buttonFavAndBasket/index'
 import { useState } from 'react'
 import { Modal } from '../modal'
 import { ProductImageCarousel } from '../productImageCarousel'
@@ -21,17 +21,17 @@ export const CardProduct: React.FC<CardProductProps> = ({ item, onFavoriteClick,
       <Link key={item._id} to={`/desc/${item._id}`}>
         <img className={styles.img} src={firstImage} alt={item.title} />
       </Link>
-      <Button className={styles.favorites} item={item} typeButton="favorites" onButtonClick={onFavoriteClick}>
+      <ButtonFavAndBasket className={styles.favorites} item={item} typeButton="favorites" onButtonClick={onFavoriteClick}>
         <img src={isFavorite ? liked : unliked} alt={isFavorite ? liked : unliked} />
-      </Button>
+      </ButtonFavAndBasket>
       <button className={styles.loupe} onClick={toggleImageModal}>
         <img src={loupe} alt="loupe to enlarge images" />
       </button>
       <p className={styles.title}>{item.title}</p>
       <p className={styles.price}> BYN {item.price}</p>
-      <Button className={styles.basket} item={item} typeButton="basket" onButtonClick={onBasketClick}>
+      <ButtonFavAndBasket className={styles.basket} item={item} typeButton="basket" onButtonClick={onBasketClick}>
         {isInBasket ? 'Remove from cart' : 'Add to cart'}
-      </Button>
+      </ButtonFavAndBasket>
       <Modal open={isImageModalOpen} onClose={toggleImageModal}>
         <ProductImageCarousel images={Array.isArray(item.images) ? item.images : [item.images]} />
       </Modal>

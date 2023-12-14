@@ -104,3 +104,13 @@ export interface BasketContextProps {
   updateBasketCount: () => void
   basketCount: number
 }
+export interface AuthFormProps {
+  showPassword: boolean
+  seePassword: () => void
+  login: string
+  password: string
+  handleLoginChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handlePasswordChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleLogin: () => void
+  handleRegistration: () => void
+}

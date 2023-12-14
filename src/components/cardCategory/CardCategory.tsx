@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { CatalogProps } from '../../shared/api/types'
-import styles from './category.module.css'
+import styles from './styles.module.css'
 
 interface CategoryProps {
   item: CatalogProps
