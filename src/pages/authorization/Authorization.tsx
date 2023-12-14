@@ -57,8 +57,9 @@ export const Authorization: React.FC = () => {
   }
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const handleBasket = () => {
-    const refresh = localStorage.getItem('refreshToken')
-    setIsAuthenticated(!!refresh)
+    //TODO: сравнивать токены, сейчас заглушка чтобы что-то было сохранено
+    const refreshToken = localStorage.getItem('refreshToken')
+    setIsAuthenticated(!!refreshToken)
   }
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export const Authorization: React.FC = () => {
   return (
     <>
       {isAuthenticated ? (
+        //TODO: styles
         <div className={styles.account}>
           <h2>Welcome to your Zebra account</h2>
           <p>Here you can see all the information about your purchases</p>

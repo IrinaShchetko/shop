@@ -4,26 +4,31 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .siteCover {
   width: 73.125rem;
   top: 0;
   left: 0;
 }
+
 .logo {
   position: absolute;
   top: 50%;
   left: 58%;
   transform: translate(-50%, -50%);
 }
+
 .navigation {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .search {
   width: 12.5rem;
-  margin-right: auto;
+  margin-right: 25%;
 }
+
 .contact,
 .feedback,
 .favorites,

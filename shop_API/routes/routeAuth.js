@@ -13,10 +13,10 @@ const mongoClient = new MongoClient(url, {
 class TokenService {
     generateTokens(payload) {
         const accessToken = jwt.sign(payload, process.env.JWT_PRIVATE_ACCESS, {
-            expiresIn: '1m',
+            expiresIn: '1d',
         })
         const refreshToken = jwt.sign(payload, process.env.JWT_PRIVATE_REFRESH, {
-            expiresIn: '1d',
+            expiresIn: '10d',
         })
         return {
             accessToken,
