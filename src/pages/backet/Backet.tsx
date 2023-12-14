@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './backet.module.css'
 import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
 import { BasketSum } from '../../components/basketSum'
@@ -15,7 +16,7 @@ export const Basket = () => {
   const dispatch = useAppDispatch()
   const [totalSum, setTotalSum] = useState(0)
   const { privateVisibility, updateBasketCount } = usePrivate()
-
+  const navigate = useNavigate()
   useEffect(() => {
     updateBasketCount()
   }, [])
@@ -24,6 +25,15 @@ export const Basket = () => {
     const updatedTotalSum = basket.reduce((acc, item) => acc + item.price * item.count, 0)
     setTotalSum(updatedTotalSum)
   }, [basket])
+  useEffect(() => {
+    if (!privateVisibility) {
+      const timeoutId = setTimeout(() => {
+        navigate('/account', { replace: true })
+      }, 1000)
+
+      return () => clearTimeout(timeoutId)
+    }
+  }, [navigate, privateVisibility])
 
   const handleQuantityChange = async (itemId: string, value: number) => {
     try {

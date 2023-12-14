@@ -11,16 +11,16 @@
 }
 
 .background {
-  width: calc(100% - 6rem);
-  height: calc(100% - 6rem);
-  margin: auto;
+  width: calc(100% + 20%);
+  height: calc(100% + 10%);
   position: absolute;
 }
 
 .wrapper {
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0;
   margin: auto;
+  margin-top: 5%;
   z-index: 1;
   background-color: var(--add-text-color);
   display: flex;
@@ -36,20 +36,27 @@
 
 .form {
   z-index: 1;
-  width: 80%;
+  width: 100%;
   padding: 10px;
   border-radius: 10px;
   background-color: var(--add-text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .label {
-  display: block;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
 }
 
 .input {
   width: 100%;
   padding: 8px;
-  margin-bottom: 1rem;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -57,11 +64,10 @@
 .submit {
   border-radius: 3px;
   padding: 1rem;
-  width: 80%;
+  width: 100%;
   background: var(--main-button-color);
   color: var(--add-text-color);
-  margin: auto;
-  display: block;
+  margin: 0;
 }
 .submit:hover {
   background: var(--hover-button-color);
@@ -95,18 +101,21 @@
 .desc::before {
   top: 50%;
   left: 0;
-  transform: translateY(-50%);
 }
 .desc::after {
   top: 50%;
   right: 0;
-  transform: translateY(-50%);
 }
 .passwordContainer {
   position: relative;
 }
-.buttonEye {
+.eye {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20%;
+  left: 75%;
+  z-index: 1;
+}
+.eye:hover,
+.eye:focus {
+  border: none;
 }
