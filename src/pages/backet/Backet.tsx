@@ -1,26 +1,23 @@
+import { useEffect, useState } from 'react'
 import styles from './backet.module.css'
 import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
 import { BasketSum } from '../../components/basketSum'
 import { CardInBasket } from '../../components/cardInBasket'
-import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync, updateQuantityAsync } from '../../redux'
-import { useEffect, useState } from 'react'
+import { addToBasketAsync, removeFromBasketAsync, updateQuantityAsync } from '../../redux'
 import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { BackButton } from '../../components/backButton'
+import { useBasket } from '../../shared/context/BasketContext'
 
-// TODO: добавить функцию PayClick
-//TODO: доделать token
+// // TODO: добавить функцию PayClick
+// //TODO: доделать token
 export const Basket = () => {
   const { favorites, basket, handleActionForFavorites, handleActionForBasket } = useFavoritesAndBasket()
   const dispatch = useAppDispatch()
   const [totalSum, setTotalSum] = useState(0)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const handleBasketPrivate = () => {
-    const refresh = localStorage.getItem('refreshToken')
-    setIsAuthenticated(!!refresh)
-  }
+  const { basketCountVisibility, updateBasketCount } = useBasket()
 
   useEffect(() => {
-    handleBasketPrivate()
+    updateBasketCount()
   }, [])
 
   useEffect(() => {
@@ -44,7 +41,7 @@ export const Basket = () => {
     <div className="container">
       <>
         <BackButton />
-        {isAuthenticated ? (
+        {basketCountVisibility ? (
           <section className={styles.basket}>
             <div className={styles.goods}>
               {basket.map(item => (
@@ -58,8 +55,8 @@ export const Basket = () => {
                     handleActionForFavorites(
                       item,
                       favorites.some(favoritesItem => favoritesItem._id === item._id),
-                      addToFavoritesAsync,
-                      removeFromFavoritesAsync,
+                      addToBasketAsync,
+                      removeFromBasketAsync,
                     )
                   }
                   isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}

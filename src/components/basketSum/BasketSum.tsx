@@ -1,9 +1,7 @@
+import { BasketSumProps } from '../../shared/api/types'
 import styles from './styles.module.css'
-interface BasketTotalProps {
-  total: number
-  onButtonClick: () => void
-}
-export const BasketSum = ({ total, onButtonClick }: BasketTotalProps) => {
+
+export const BasketSum = ({ total, onButtonClick }: BasketSumProps) => {
   return (
     <div className={styles.total}>
       <span className={styles.sum}>Order Total: {total} BYN </span>

@@ -20,19 +20,38 @@
 .favorites {
   grid-column: 3;
   grid-row: 1;
+  padding: 5px;
+  transition: border 0.3s ease-in-out;
+}
+.favorites:hover,
+.remove__basket:hover {
+  box-shadow: var(--hover-shadow-button);
+  border: 2px solid var(--main-background-color);
+  font-weight: bold;
 }
 .quantity {
   grid-column: 2;
   grid-row: 2;
-}
-.quantity_decrease {
-  background-color: grey;
-}
-.quantity_increase {
-  background-color: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.quantity__increase,
+.quantity__decrease {
+  background-color: var(--main-background-color);
+}
+.quantity__increase:hover,
+.quantity__decrease:hover {
+  box-shadow: var(--hover-shadow-button);
+}
+.quantity__input {
+  border: none;
+  text-align: center;
+}
 .remove__basket {
   grid-column: 3;
-  grid-row: 2;
+  grid-row: 3;
+  padding: 5px;
+  border-radius: 5px;
 }
