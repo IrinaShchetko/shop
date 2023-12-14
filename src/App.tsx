@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Authorization, Basket, Description, Favorites, Home, MainLayout, Products } from './pages'
-import { BasketProvider } from './shared/context/BasketContext'
+import { PrivateProvider } from './shared/context/PrivateContext'
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <BasketProvider>
+        <PrivateProvider>
           <Routes>
             <Route element={<MainLayout />}>
               {/* страница понравившиеся */}
@@ -23,7 +23,7 @@ function App() {
               <Route path="/desc/:productId" element={<Description />}></Route>
             </Route>
           </Routes>
-        </BasketProvider>
+        </PrivateProvider>
       </BrowserRouter>
     </>
   )

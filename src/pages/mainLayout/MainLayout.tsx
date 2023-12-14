@@ -10,7 +10,7 @@ import { useActionForButton } from '../../shared/hooks/useActionForButton'
 import { CardProduct } from '../../components/cardProduct'
 import styles from './main.module.css'
 import { AppPagination } from '../../components/pagination'
-import { useBasket } from '../../shared/context/BasketContext'
+import { usePrivate } from '../../shared/context/PrivateContext'
 
 export const MainLayout = () => {
   const { basket, favorites } = useFavoritesAndBasket()
@@ -30,14 +30,14 @@ export const MainLayout = () => {
 
   const currentPageData = searchData.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 
-  const { basketCount, basketCountVisibility, updateBasketCount } = useBasket()
+  const { basketCount, privateVisibility, updateBasketCount } = usePrivate()
   useEffect(() => {
     updateBasketCount()
   }, [])
 
   return (
     <div className="container">
-      {basketCountVisibility ? <Header totalQuantityInBasket={basketCount} /> : <Header totalQuantityInBasket={0} />}
+      {privateVisibility ? <Header totalQuantityInBasket={basketCount} /> : <Header totalQuantityInBasket={0} />}
       {searchValue ? (
         <>
           <div className={styles.products}>

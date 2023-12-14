@@ -5,7 +5,7 @@ import { loginUser, registerUser } from '../../shared/api/auth'
 import { useNavigate } from 'react-router-dom'
 import styles from './auth.module.css'
 import { AuthForm } from '../../components/authForm'
-import { useBasket } from '../../shared/context/BasketContext'
+import { usePrivate } from '../../shared/context/PrivateContext'
 
 export const Authorization: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -17,7 +17,7 @@ export const Authorization: React.FC = () => {
   const seePassword = () => {
     setShowPassword(prevPassword => !prevPassword)
   }
-  const { basketCountVisibility, updateBasketCount } = useBasket()
+  const { privateVisibility, updateBasketCount } = usePrivate()
 
   const handleRegistration = async () => {
     try {
@@ -65,7 +65,7 @@ export const Authorization: React.FC = () => {
 
   return (
     <>
-      {basketCountVisibility ? (
+      {privateVisibility ? (
         <div className={styles.account}>
           <h2 className={styles.greeting}>Welcome to your Zebra account</h2>
           <p className={styles.info}>Here you can see all the information about your purchases</p>
