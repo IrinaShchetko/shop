@@ -3,7 +3,7 @@ import styles from './backet.module.css'
 import { useFavoritesAndBasket } from '../../shared/hooks/useFavoritesAndBasket'
 import { BasketSum } from '../../components/basketSum'
 import { CardInBasket } from '../../components/cardInBasket'
-import { addToBasketAsync, removeFromBasketAsync, updateQuantityAsync } from '../../redux'
+import { addToBasketAsync, removeFromBasketAsync, updateQuantityAsync, addToFavoritesAsync, removeFromFavoritesAsync } from '../../redux'
 import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { BackButton } from '../../components/backButton'
 import { usePrivate } from '../../shared/context/PrivateContext'
@@ -55,8 +55,8 @@ export const Basket = () => {
                     handleActionForFavorites(
                       item,
                       favorites.some(favoritesItem => favoritesItem._id === item._id),
-                      addToBasketAsync,
-                      removeFromBasketAsync,
+                      addToFavoritesAsync,
+                      removeFromFavoritesAsync,
                     )
                   }
                   isFavorite={favorites.some(favoritesItem => favoritesItem._id === item._id)}
