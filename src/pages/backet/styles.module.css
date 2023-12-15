@@ -16,16 +16,3 @@
   text-align: center;
   margin-top: 20px;
 }
-.payment {
-  background-color: white;
-  border-radius: 10px;
-  width: 40vw;
-  height: 30vh;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.text {
-  font-size: 2rem;
-}
