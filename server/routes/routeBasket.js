@@ -77,3 +77,15 @@ routerBasket.delete('/:id', async (req, res) => {
     res.status(500).send('Internal Server Error')
   }
 })
+
+routerBasket.delete('/all', async (req, res) => {
+  try {
+    const db = mongoClient.db('zebra')
+    const collection = db.collection('basket')
+    await collection.deleteMany({})
+    res.json({ success: true })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send('Internal Server Error')
+  }
+})

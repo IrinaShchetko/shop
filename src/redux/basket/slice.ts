@@ -23,6 +23,9 @@ export const basketSlice = createSlice({
         itemToUpdate.count = count
       }
     },
+    clearBasket: state => {
+      state.items = []
+    },
   },
   extraReducers: builder => {
     builder

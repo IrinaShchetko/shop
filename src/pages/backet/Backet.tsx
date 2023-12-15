@@ -8,6 +8,7 @@ import { addToBasketAsync, removeFromBasketAsync, updateQuantityAsync, addToFavo
 import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { BackButton } from '../../components/backButton'
 import { usePrivate } from '../../shared/context/PrivateContext'
+import { Modal } from '../../components/modal'
 
 // // TODO: добавить функцию PayClick
 // //TODO: доделать token
@@ -43,10 +44,10 @@ export const Basket = () => {
     }
   }
 
-  const handlePayClick = () => {
-    console.log('Оплата успешно проведена!')
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false)
+  const togglePaymentModal = () => {
+    setIsPaymentModalOpen(!isPaymentModalOpen)
   }
-
   return (
     <div className="container">
       <>
@@ -81,12 +82,19 @@ export const Basket = () => {
                 />
               ))}
             </div>
-            <BasketSum total={totalSum} onButtonClick={handlePayClick} />
+            <div className={styles.summary}>
+              <BasketSum total={totalSum} onButtonClick={togglePaymentModal} />
+            </div>
           </section>
         ) : (
           <h2 className={styles.greeting}>Please log in or register to view your basket.</h2>
         )}
       </>
+      <Modal open={isPaymentModalOpen} onClose={togglePaymentModal}>
+        <div className={styles.payment}>
+          <p className={styles.text}>Оплата успешно проведена!</p>
+        </div>
+      </Modal>
     </div>
   )
 }

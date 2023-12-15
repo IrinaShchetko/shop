@@ -99,6 +99,7 @@ export interface AuthResponseProps {
 export interface BasketSumProps {
   total: number
   onButtonClick: () => void
+  className?: string
 }
 export interface BasketContextProps {
   privateVisibility: boolean
