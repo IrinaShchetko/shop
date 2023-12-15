@@ -22,6 +22,7 @@ export const Description = () => {
     <div className="container">
       <BackButton />
       <Desc
+        images={selectedProduct.images}
         key={selectedProduct._id}
         product={selectedProduct}
         onFavoriteClick={() =>

@@ -28,6 +28,7 @@ export interface DescProps {
   onBasketClick: (itemId: number | string, isCurrentlyInBasket: boolean) => void
   isFavorite?: boolean
   isInBasket?: boolean
+  images: string[] | string
 }
 
 export interface CatalogProps {
