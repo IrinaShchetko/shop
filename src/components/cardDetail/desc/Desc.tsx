@@ -2,7 +2,7 @@ import unliked from '../../../assets/main/unliked.svg'
 import liked from '../../../assets/main/liked.svg'
 import { DescProps } from '../../../shared/api/types'
 import styles from './styles.module.css'
-import { Button } from '../../button'
+import { ButtonFavAndBasket } from '../../buttonFavAndBasket'
 import { ProductImageCarousel } from '../../productImageCarousel'
 
 export const Desc = ({ product, onBasketClick, onFavoriteClick, isFavorite = false, isInBasket = false }: DescProps) => {
@@ -13,12 +13,12 @@ export const Desc = ({ product, onBasketClick, onFavoriteClick, isFavorite = fal
       </div>
       <div className={styles.info}>
         <h3 className={styles.title}>{product.title}</h3>
-        <Button className={styles.favorites} item={product} typeButton="favorites" onButtonClick={onFavoriteClick}>
+        <ButtonFavAndBasket className={styles.favorites} item={product} typeButton="favorites" onButtonClick={onFavoriteClick}>
           <img src={isFavorite ? liked : unliked} alt={isFavorite ? liked : unliked} />
-        </Button>
-        <Button className={styles.basket} item={product} typeButton="basket" onButtonClick={onBasketClick}>
+        </ButtonFavAndBasket>
+        <ButtonFavAndBasket className={styles.basket} item={product} typeButton="basket" onButtonClick={onBasketClick}>
           {isInBasket ? 'Remove from cart' : 'Add to cart'}
-        </Button>
+        </ButtonFavAndBasket>
         {product.size.map((item, index) => (
           <div key={index} className={styles.sizesContainer}>
             <p className={styles.size}>{item}</p>

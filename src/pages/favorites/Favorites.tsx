@@ -1,4 +1,4 @@
-import styles from './favorites.module.css'
+import styles from './styles.module.css'
 import { CardProduct } from '../../components/cardProduct'
 import { useNavigate } from 'react-router-dom'
 import { addToBasketAsync, addToFavoritesAsync, removeFromBasketAsync, removeFromFavoritesAsync } from '../../redux'
@@ -43,7 +43,7 @@ export const Favorites = () => {
             })}
           </section>
         ) : (
-          <p>Please log in or register to view your favorites.</p>
+          <h2 className={styles.greeting}>Please log in or register to view your favorites.</h2>
         )}
       </>
     </div>

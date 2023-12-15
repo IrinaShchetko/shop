@@ -1,26 +1,16 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import background from '../../assets/header/form_background.png'
 import openEye from '../../assets/header/openEye.png'
 import closeEye from '../../assets/header/closeEye.png'
 import styles from './styles.module.css'
-
-interface AuthFormProps {
-  showPassword: boolean
-  seePassword: () => void
-  email: string
-  password: string
-  handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void
-  handlePasswordChange: (e: ChangeEvent<HTMLInputElement>) => void
-  handleLogin: () => void
-  handleRegistration: () => void
-}
+import { AuthFormProps } from '../../shared/api/types'
 
 export const AuthForm: React.FC<AuthFormProps> = ({
   showPassword,
   seePassword,
-  email,
+  login,
   password,
-  handleEmailChange,
+  handleLoginChange,
   handlePasswordChange,
   handleLogin,
   handleRegistration,
@@ -32,9 +22,9 @@ export const AuthForm: React.FC<AuthFormProps> = ({
 
         <div className={styles.form}>
           <h2 className={styles.title}>Sign-In</h2>
-          <label htmlFor="email" className={styles.label}>
-            Email
-            <input type="text" value={email} onChange={handleEmailChange} placeholder="Enter your email.." />
+          <label htmlFor="login" className={styles.label}>
+            Login:
+            <input type="text" value={login} onChange={handleLoginChange} placeholder="Enter your login.." />
           </label>
           <label htmlFor="password" className={styles.label}>
             Password:
@@ -46,7 +36,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({
           <button className={styles.submit} onClick={handleLogin}>
             Login
           </button>
-          <div className={styles.desc}></div>
+          <div className={styles.desc}>New to zebra.com</div>
           <button className={styles.submit} onClick={handleRegistration}>
             Create your ZEBRA account
           </button>

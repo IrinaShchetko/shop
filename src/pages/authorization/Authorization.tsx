@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux'
 import { setAuthData } from '../../redux/auth/slice'
 import { loginUser, registerUser } from '../../shared/api/auth'
 import { useNavigate } from 'react-router-dom'
-import styles from './auth.module.css'
+import styles from './styles.module.css'
 import { AuthForm } from '../../components/authForm'
 import { usePrivate } from '../../shared/context/PrivateContext'
 
 export const Authorization: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [email, setEmail] = useState<string>('')
+  const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const dispatch = useDispatch()
   const navigation = useNavigate()
@@ -21,7 +21,7 @@ export const Authorization: React.FC = () => {
 
   const handleRegistration = async () => {
     try {
-      const userData = await registerUser(email, password)
+      const userData = await registerUser(login, password)
       dispatch(setAuthData(userData))
 
       localStorage.setItem('accessToken', userData.accessToken)
@@ -37,7 +37,7 @@ export const Authorization: React.FC = () => {
 
   const handleLogin = async () => {
     try {
-      const userData = await loginUser(email, password)
+      const userData = await loginUser(login, password)
       dispatch(setAuthData(userData))
       localStorage.setItem('accessToken', userData.accessToken)
       if (userData.statusCode === 200) {
@@ -50,8 +50,8 @@ export const Authorization: React.FC = () => {
     }
   }
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
+  const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setLogin(e.target.value)
   }
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -77,9 +77,9 @@ export const Authorization: React.FC = () => {
         <AuthForm
           seePassword={seePassword}
           showPassword={showPassword}
-          email={email}
+          login={login}
           password={password}
-          handleEmailChange={handleEmailChange}
+          handleLoginChange={handleLoginChange}
           handlePasswordChange={handlePasswordChange}
           handleLogin={handleLogin}
           handleRegistration={handleRegistration}

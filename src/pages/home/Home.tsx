@@ -3,7 +3,7 @@ import { RootStore } from '../../redux/store'
 import { fetchCatalogThunk } from '../../redux'
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/useRedux'
 import { CardCategory } from '../../components/cardCategory'
-import styles from './home.module.css'
+import styles from './styles.module.css'
 
 export const Home = () => {
   const dispatch = useAppDispatch()

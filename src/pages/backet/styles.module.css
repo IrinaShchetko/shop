@@ -1,0 +1,9 @@
+.basket {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.greeting {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 20px;
+}

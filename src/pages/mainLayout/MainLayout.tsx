@@ -8,7 +8,7 @@ import { addToBasketAsync, addToFavoritesAsync, fetchGoodsThunk, removeFromBaske
 import { RootStore } from '../../redux/store'
 import { useActionForButton } from '../../shared/hooks/useActionForButton'
 import { CardProduct } from '../../components/cardProduct'
-import styles from './main.module.css'
+import styles from './styles.module.css'
 import { AppPagination } from '../../components/pagination'
 import { usePrivate } from '../../shared/context/PrivateContext'
 

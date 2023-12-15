@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import styles from './basket.module.css'
+import styles from './styles.module.css'
 import basketSvg from '../../../assets/header/basket.svg'
 import { BasketProps } from '../../../shared/api/types'
 
