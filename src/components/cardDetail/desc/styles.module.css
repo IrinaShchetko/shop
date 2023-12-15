@@ -1,5 +1,6 @@
 .desc {
   display: flex;
+  height: 70vh;
 }
 
 .imagesGallery {
@@ -12,6 +13,8 @@
 .image {
   width: 100%;
   cursor: pointer;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .mainImage {
@@ -19,7 +22,8 @@
   z-index: 1;
 }
 .selectedImage {
-  width: 90%;
+  max-width: 90%;
+  max-height: 100%;
 }
 .info {
   width: 30%;

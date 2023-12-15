@@ -30,3 +30,8 @@ export const updateQuantityAsync = createAsyncThunk('basket/updateQuantityAsync'
     throw error
   }
 })
+
+//удалить все
+export const clearBasketAsync = createAsyncThunk('basket/clearBasketAsync', async () => {
+  await basketApi.clearBasket()
+})

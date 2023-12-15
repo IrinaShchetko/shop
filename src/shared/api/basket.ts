@@ -26,5 +26,8 @@ class BasketApi extends Api {
   async updateBasketItem(item: { _id: string; count: number }): Promise<void> {
     await this.api.put(`${this.endpoint}${item._id}`, { count: item.count })
   }
+  async clearBasket(): Promise<void> {
+    await this.api.delete(`${this.endpoint}/all`)
+  }
 }
 export default new BasketApi()
