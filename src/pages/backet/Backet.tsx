@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../shared/hooks/useRedux'
 import { BackButton } from '../../components/backButton'
 import { usePrivate } from '../../shared/context/PrivateContext'
 import { Modal } from '../../components/modal'
+import { PaymentDelivery } from '../../components/paymentModal'
 
 // // TODO: добавить функцию PayClick
 // //TODO: доделать token
@@ -91,9 +92,7 @@ export const Basket = () => {
         )}
       </>
       <Modal open={isPaymentModalOpen} onClose={togglePaymentModal}>
-        <div className={styles.payment}>
-          <p className={styles.text}>Оплата успешно проведена!</p>
-        </div>
+        <PaymentDelivery />
       </Modal>
     </div>
   )
