@@ -3,7 +3,7 @@ import liked from '../../../assets/main/liked.svg'
 import { DescProps } from '../../../shared/api/types'
 import styles from './styles.module.css'
 import { ButtonFavAndBasket } from '../../buttonFavAndBasket'
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Desc: React.FC<DescProps> = ({ product, onBasketClick, onFavoriteClick, isFavorite, isInBasket, images }) => {
   let imageArray: string[] = []
@@ -18,7 +18,7 @@ export const Desc: React.FC<DescProps> = ({ product, onBasketClick, onFavoriteCl
     return null
   }
 
-  const [selectedImage, setSelectedImage] = React.useState(imageArray[0])
+  const [selectedImage, setSelectedImage] = useState(imageArray[0])
 
   const handleImageClick = (image: string) => {
     setSelectedImage(image)
