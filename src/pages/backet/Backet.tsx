@@ -10,6 +10,7 @@ import { BackButton } from '../../components/backButton'
 import { usePrivate } from '../../shared/context/PrivateContext'
 import { Modal } from '../../components/modal'
 import { PaymentDelivery } from '../../components/paymentModal'
+import { DeleteAllBasket } from '../../components/deleteAll'
 
 // // TODO: добавить функцию PayClick
 // //TODO: доделать token
@@ -86,6 +87,11 @@ export const Basket = () => {
             <div className={styles.summary}>
               <BasketSum total={totalSum} onButtonClick={togglePaymentModal} />
             </div>
+            <DeleteAllBasket
+              onClick={() => {
+                // dispatch(clearBasketAsync())
+              }}
+            />
           </section>
         ) : (
           <h2 className={styles.greeting}>Please log in or register to view your basket.</h2>

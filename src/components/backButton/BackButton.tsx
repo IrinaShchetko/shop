@@ -11,6 +11,7 @@ export const BackButton = () => {
   return (
     <button className={styles.backButton} onClick={navigateToHome}>
       <img className={styles.backImg} width={20} height={20} src={back} alt="back arrow" />
+      <p>BACK</p>
     </button>
   )
 }
