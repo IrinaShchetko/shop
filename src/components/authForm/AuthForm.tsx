@@ -1,7 +1,7 @@
 import React from 'react'
-import background from '../../assets/header/form_background.png'
-import openEye from '../../assets/header/openEye.png'
-import closeEye from '../../assets/header/closeEye.png'
+import background from '../../assets/header/form_background.webp'
+import openEye from '../../assets/header/openEye.webp'
+import closeEye from '../../assets/header/closeEye.webp'
 import styles from './styles.module.css'
 import { AuthFormProps } from '../../shared/api/types'
 

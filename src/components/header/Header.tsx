@@ -1,5 +1,5 @@
 import styles from './styles.module.css'
-import img from '../../assets/header/fone.png'
+import img from '../../assets/header/fone.webp'
 import contact from '../../assets/header/contact.svg'
 import feedback from '../../assets/header/chat.svg'
 import favorites from '../../assets/header/favorites.svg'
